@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AzureB2B on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/azureb2b/</link>
+    <link>/en/tags/azureb2b/</link>
     <description>Recent content in AzureB2B on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 01 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/azureb2b/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/tags/azureb2b/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Eenmalige toegangscode voor Azure AD B2B-Guest Users</title>
-      <link>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</link>
+      <link>/en/blog/eenmalige-authenticatie-voor-guest-users/</link>
       <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</guid>
+      <guid>/en/blog/eenmalige-authenticatie-voor-guest-users/</guid>
       <description>&lt;h1 id=&#34;eenmalige-toegangscode-voor-azure-ad-b2b-guest-users&#34;&gt;Eenmalige toegangscode voor Azure AD B2B-Guest Users&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;AzureAD B2B staat externe gebruikers toe om toepassingen, services en gegevens van de Tenant te gebruiken.&#xA;Om gasten toegang toe te staan moeten ze een AzureAD account, Microsoft account of een Google Federation hebben. (Voor @gmail.com en @googlemail.com gebruikers).&#xA;Mocht een user nu geen van deze accounts hebben dan kan er toch connectie gemaakt worden met een eenmalige toegangscode.&#xA;Deze code wordt naar het mailadres van de guest user gestuurd en de code blijft dan voor 30 minuten geldig.&#xA;Zodra de guest user zichzelf heeft geautentiseerd blijft de sessie 24 uur valid, daarna moet de user een nieuwe code aanvragen om opnieuw te kunnen inloggen.&#xA;Gebruikers van een eenmalige toegangscode moeten gebruik maken van onderstaande links wanneer ze zich authenticeren:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Disk Encryptie in Azure VMs</title>
-      <link>//localhost:1313/en/blog/disk-encryptie-in-azure-vms/</link>
+      <link>/en/blog/disk-encryptie-in-azure-vms/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/disk-encryptie-in-azure-vms/</guid>
+      <guid>/en/blog/disk-encryptie-in-azure-vms/</guid>
       <description>&lt;h1 id=&#34;disk-encryptie-in-azure-vms&#34;&gt;Disk Encryptie in Azure VMs&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;In het verleden vereiste het proces van het encrypten van een virtuele machine in Microsoft Azure een AD App account om het werk uit te kunnen voeren.&#xA;Tegenwoordig hebben we een eenvoudigere manier om onze VM’s in Microsoft Azure te encrypten en deze nieuwe methode is geïntegreerd in de Azure Portal.&#xA;In dit artikel gaan we de basisprincipes behandelen om encryptie in te schakelen met behulp van de nieuwe methode, inclusief het maken van een Azure Key Vault.&#xA;We nemen ook de stappen door die kunnen worden uitgevoerd in de Azure Portal en de Powershell functies om het encryptieproces te ondersteunen.&lt;/p&gt;</description>
     </item>
   </channel>

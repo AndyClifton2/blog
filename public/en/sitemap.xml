@@ -2,69 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/en/</loc>
+    <loc>/en/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/</loc>
+    <loc>/en/blog/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/default-outbound-internet-access/</loc>
+    <loc>/en/blog/default-outbound-internet-access/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/networking/</loc>
+    <loc>/en/tags/networking/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/</loc>
+    <loc>/en/tags/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/emoji/</loc>
+    <loc>/en/tags/arc/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/blog/test2/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/tags/emoji/</loc>
     <lastmod>2024-05-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/deploy-scom-mi/</loc>
+    <loc>/en/blog/deploy-scom-mi/</loc>
     <lastmod>2024-05-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/shrink-os-disk-size-in-azure/</loc>
+    <loc>/en/blog/shrink-os-disk-size-in-azure/</loc>
     <lastmod>2024-05-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/upgrade-a-server-from-2019-to-2022/</loc>
+    <loc>/en/blog/upgrade-a-server-from-2019-to-2022/</loc>
     <lastmod>2024-03-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/upgrade20192022vm/</loc>
+    <loc>/en/tags/upgrade20192022vm/</loc>
     <lastmod>2024-03-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/azureb2b/</loc>
+    <loc>/en/tags/azureb2b/</loc>
     <lastmod>2024-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</loc>
+    <loc>/en/blog/eenmalige-authenticatie-voor-guest-users/</loc>
     <lastmod>2024-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/arc/</loc>
+    <loc>/en/blog/configure-azure-arc-in-een-test-omgeving/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving/</loc>
-    <lastmod>2024-01-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/en/blog/run-powershell-script-with-hybrid-worker/</loc>
+    <loc>/en/blog/run-powershell-script-with-hybrid-worker/</loc>
     <lastmod>2023-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/passwordprotection/</loc>
+    <loc>/en/blog/passwordprotection/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/disk-encryptie-in-azure-vms/</loc>
+    <loc>/en/blog/disk-encryptie-in-azure-vms/</loc>
     <lastmod>2023-02-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/disaster-recovery/</loc>
+    <loc>/en/blog/disaster-recovery/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/disaterrecovery/</loc>
+    <loc>/en/tags/disaterrecovery/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/page/about/</loc>
+    <loc>/en/page/about/</loc>
     <lastmod>2021-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/page/</loc>
+    <loc>/en/page/</loc>
     <lastmod>2021-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/categories/</loc>
+    <loc>/en/categories/</loc>
   </url>
 </urlset>

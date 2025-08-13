@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/</link>
+    <link>/en/tags/</link>
     <description>Recent content in Tags on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Networking</title>
-      <link>//localhost:1313/en/tags/networking/</link>
+      <link>/en/tags/networking/</link>
       <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/networking/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Emoji</title>
-      <link>//localhost:1313/en/tags/emoji/</link>
-      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/emoji/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Upgrade,2019,2022,VM</title>
-      <link>//localhost:1313/en/tags/upgrade20192022vm/</link>
-      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/upgrade20192022vm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AzureB2B</title>
-      <link>//localhost:1313/en/tags/azureb2b/</link>
-      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/azureb2b/</guid>
+      <guid>/en/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>ARC</title>
-      <link>//localhost:1313/en/tags/arc/</link>
-      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/arc/</guid>
+      <link>/en/tags/arc/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/en/tags/arc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emoji</title>
+      <link>/en/tags/emoji/</link>
+      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
+      <guid>/en/tags/emoji/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Upgrade,2019,2022,VM</title>
+      <link>/en/tags/upgrade20192022vm/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/en/tags/upgrade20192022vm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AzureB2B</title>
+      <link>/en/tags/azureb2b/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/en/tags/azureb2b/</guid>
       <description></description>
     </item>
     <item>
       <title>Disater,Recovery</title>
-      <link>//localhost:1313/en/tags/disaterrecovery/</link>
+      <link>/en/tags/disaterrecovery/</link>
       <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/tags/disaterrecovery/</guid>
+      <guid>/en/tags/disaterrecovery/</guid>
       <description></description>
     </item>
   </channel>

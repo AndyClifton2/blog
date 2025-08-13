@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ARC on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/arc/</link>
+    <link>/en/tags/arc/</link>
     <description>Recent content in ARC on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/arc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/en/tags/arc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>/en/blog/test2/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/en/blog/test2/</guid>
+      <description>&lt;h1 id=&#34;run-powershell-script-met-hybrid-worker-groups&#34;&gt;Run Powershell Script met Hybrid Worker Groups&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord-tset&#34;&gt;Voorwoord Tset&lt;/h2&gt;&#xA;&lt;p&gt;Als je de on-premises omgeving wilt automatiseren, is Azure Arc Server een geweldige aanbieding voor het onboarden van Azure-beheerservices zoals Azure Monitor, Sentinel, maar ook Defender en IAM.&#xA;Een van de andere voordelen die we nog hebben is het gebruik van Hybrid Workers. Hierdoor kun je Runbooks, Logic Apps of Power Automate gebruiken om het beheer of deploy van dingen op je on-premise vm mogelijk te maken.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Configure Azure ARC in een test omgeving</title>
-      <link>//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving/</link>
+      <link>/en/blog/configure-azure-arc-in-een-test-omgeving/</link>
       <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving/</guid>
+      <guid>/en/blog/configure-azure-arc-in-een-test-omgeving/</guid>
       <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
     </item>
   </channel>

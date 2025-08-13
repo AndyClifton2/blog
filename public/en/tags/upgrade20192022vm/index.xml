@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Upgrade,2019,2022,VM on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/upgrade20192022vm/</link>
+    <link>/en/tags/upgrade20192022vm/</link>
     <description>Recent content in Upgrade,2019,2022,VM on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/upgrade20192022vm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/tags/upgrade20192022vm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inplace Upgrade een Server van 2019 naar 2022</title>
-      <link>//localhost:1313/en/blog/upgrade-a-server-from-2019-to-2022/</link>
+      <link>/en/blog/upgrade-a-server-from-2019-to-2022/</link>
       <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/upgrade-a-server-from-2019-to-2022/</guid>
+      <guid>/en/blog/upgrade-a-server-from-2019-to-2022/</guid>
       <description>&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;De vraag die ik regelmatig krijg is: Hoe kan ik een Windows Server upgraden naar de nieuwste versie van Windows nu ik geen iso kan mounten?&#xA;Microsoft heeft hier over nagedacht en heeft de mogelijkheid gecreëerd om een inplace upgrade uit te voeren op de machine zelf.&#xA;Hieronder leg ik verder uit hoe je deze stappen het beste kunt doen.&lt;/p&gt;&#xA;&lt;h3 id=&#34;creëer-een-managed-disk-met-de-iso-hierin&#34;&gt;Creëer een Managed Disk met de Iso hierin.&lt;/h3&gt;&#xA;&lt;p&gt;Het crëeren van deze disk kan alleen via Powershell.&#xA;Daarop open ISE en creëer onderstaande Powershell script:&lt;/p&gt;</description>
     </item>
   </channel>

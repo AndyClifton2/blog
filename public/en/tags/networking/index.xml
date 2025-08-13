@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networking on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/networking/</link>
+    <link>/en/tags/networking/</link>
     <description>Recent content in Networking on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Default Outbound Internet Access</title>
-      <link>//localhost:1313/en/blog/default-outbound-internet-access/</link>
+      <link>/en/blog/default-outbound-internet-access/</link>
       <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/default-outbound-internet-access/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
+      <guid>/en/blog/default-outbound-internet-access/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
