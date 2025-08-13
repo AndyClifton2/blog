@@ -2,7 +2,7 @@
 Author: "Andy Clifton"
 title: "Test"
 description: "Test omgeving Azure Arc."
-date: 2025-08-14
+date: 2025-08-12
 tags: ["ARC"]
 thumbnail: "/img/arc.jpeg"
 ---
