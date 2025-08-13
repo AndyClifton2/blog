@@ -17,12 +17,6 @@
     <loc>/en/tags/</loc>
     <lastmod>2025-08-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/en/tags/arc/</loc>
-    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/en/blog/test2/</loc>
-    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/en/tags/emoji/</loc>
     <lastmod>2024-05-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -43,6 +37,9 @@
   </url><url>
     <loc>/en/blog/eenmalige-authenticatie-voor-guest-users/</loc>
     <lastmod>2024-03-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/tags/arc/</loc>
+    <lastmod>2024-01-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/en/blog/configure-azure-arc-in-een-test-omgeving/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>

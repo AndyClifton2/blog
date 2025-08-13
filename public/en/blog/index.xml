@@ -16,13 +16,6 @@
       <description>&lt;p&gt;&lt;img src=&#34;/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Test</title>
-      <link>/en/blog/test2/</link>
-      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>/en/blog/test2/</guid>
-      <description>&lt;h1 id=&#34;run-powershell-script-met-hybrid-worker-groups&#34;&gt;Run Powershell Script met Hybrid Worker Groups&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord-tset&#34;&gt;Voorwoord Tset&lt;/h2&gt;&#xA;&lt;p&gt;Als je de on-premises omgeving wilt automatiseren, is Azure Arc Server een geweldige aanbieding voor het onboarden van Azure-beheerservices zoals Azure Monitor, Sentinel, maar ook Defender en IAM.&#xA;Een van de andere voordelen die we nog hebben is het gebruik van Hybrid Workers. Hierdoor kun je Runbooks, Logic Apps of Power Automate gebruiken om het beheer of deploy van dingen op je on-premise vm mogelijk te maken.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Installeren en configureren van SCOM Managed Instance</title>
       <link>/en/blog/deploy-scom-mi/</link>
       <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
