@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Blist (mehrsprachig)</title>
+    <link>https://github.com/AndyClifton2/testing/de/tags/</link>
+    <description>Recent content in Tags on Blist (mehrsprachig)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de</language>
+    <lastBuildDate>Thu, 14 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://github.com/AndyClifton2/testing/de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emoji</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/emoji/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/emoji/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Css</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/css/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Html</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/html/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/markdown/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Privacy</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/privacy/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/privacy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcodes</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/shortcodes/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/shortcodes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Text</title>
+      <link>https://github.com/AndyClifton2/testing/de/tags/text/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://github.com/AndyClifton2/testing/de/tags/text/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

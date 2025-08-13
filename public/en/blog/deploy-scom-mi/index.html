@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" href="/favicon.svg">
+
+  <title>
+  Installeren en configureren van SCOM Managed Instance - Andy Cliftons Blog
+  </title>
+  <meta name="description" content="Installeren en configureren van SCOM Managed Instance" />
+  <meta name="author" content="Andy Clifton" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="stylesheet" href="/css/styles.css" />
+  
+  
+
+  <meta property="og:url" content="//localhost:1313/en/blog/deploy-scom-mi/">
+  <meta property="og:site_name" content="Andy Cliftons Blog">
+  <meta property="og:title" content="Installeren en configureren van SCOM Managed Instance">
+  <meta property="og:description" content="Installeren en configureren van SCOM Managed Instance">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-05-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-07T00:00:00+00:00">
+    <meta property="article:tag" content="Emoji">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Installeren en configureren van SCOM Managed Instance">
+  <meta name="twitter:description" content="Installeren en configureren van SCOM Managed Instance">
+
+  
+  <meta itemprop="name" content="Installeren en configureren van SCOM Managed Instance">
+  <meta itemprop="description" content="Installeren en configureren van SCOM Managed Instance">
+  <meta itemprop="datePublished" content="2024-05-07T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-05-07T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2382">
+  <meta itemprop="keywords" content="Emoji">
+
+  
+</head>
+<body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative">
+  <a href="//localhost:1313/en/" class="capitalize font-extrabold text-2xl">
+    
+    <img src="/raw.png" alt="Andy Cliftons Blog" class="h-8 max-w-full" />
+    
+  </a>
+  <button class="mobile-menu-button md:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <line x1="4" y1="8" x2="20" y2="8" />
+      <line x1="4" y1="16" x2="20" y2="16" />
+    </svg>
+  </button>
+  <ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800">
+
+    
+    <li><a href="/en/blog">Blogs</a></li>
+    
+    <li><a href="/en/page/about/">Over Mij</a></li>
+    
+
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="open-search inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="10" cy="10" r="7" />
+          <line x1="21" y1="21" x2="15" y2="15" />
+        </svg>
+      </span>
+    </li>
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="toggle-dark-mode inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="3" />
+          <line x1="12" y1="5" x2="12" y2="5.01" />
+          <line x1="17" y1="7" x2="17" y2="7.01" />
+          <line x1="19" y1="12" x2="19" y2="12.01" />
+          <line x1="17" y1="17" x2="17" y2="17.01" />
+          <line x1="12" y1="19" x2="12" y2="19.01" />
+          <line x1="7" y1="17" x2="7" y2="17.01" />
+          <line x1="5" y1="12" x2="5" y2="12.01" />
+          <line x1="7" y1="7" x2="7" y2="7.01" />
+        </svg>
+      </span>
+    </li>
+    
+  </ul>
+</header>
+<main class="flex-1">
+  
+  
+
+  
+  <div class="relative max-w-5xl mx-auto px-4">
+    <img src="/Images/SCOMMI/SCOM.png" class="rounded-lg shadow-sm w-full object-contain" />
+    
+    <div class="absolute top-4 right-8 rounded shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-2 py-0.5">
+      May 7, 2024
+    </div>
+    
+  </div>
+  
+
+  <article class="prose lg:prose-lg mx-auto my-8 dark:prose-dark px-4">
+
+    <h1 class="text-2xl font-bold mb-2">Installeren en configureren van SCOM Managed Instance</h1>
+    
+    <h5 class="text-sm flex items-center flex-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <line x1="16" y1="3" x2="16" y2="7" />
+        <line x1="8" y1="3" x2="8" y2="7" />
+        <line x1="4" y1="11" x2="20" y2="11" />
+        <rect x="8" y="15" width="2" height="2" />
+      </svg>
+      Posted on May 7, 2024
+      
+        &nbsp;&bull;&nbsp;
+      
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+      </svg>
+      12 minutes
+      &nbsp;&bull;
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <line x1="3" y1="6" x2="3" y2="19" />
+        <line x1="12" y1="6" x2="12" y2="19" />
+        <line x1="21" y1="6" x2="21" y2="19" />
+      </svg>
+      2382 words
+      
+        
+      
+    </h5>
+    
+
+    <details id="TableOfContents" class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc">
+    <summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white">
+      <span>Table of contents</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <polyline points="6 9 12 15 18 9"></polyline>
+     </svg>
+    </summary>
+
+    <ul class="mt-2 pb-4">
+        
+
+        
+        <li>
+        <a href="#verkleinen-os-disk-size-in-azure">Verkleinen OS Disk Size in Azure</a>
+        
+
+        
+        <ul>
+            <ul>
+            <li>
+        <a href="#-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress &lt;==</a>
+        
+
+        
+        </li></ul>
+          <li>
+        <a href="#voorwoord">Voorwoord</a>
+        
+
+        
+        </li><li>
+        <a href="#deployen-van-scom-managed-instance">Deployen van SCOM Managed Instance.</a>
+        </li></ul>
+    </li></ul>
+  </details>
+
+    <h1 id="verkleinen-os-disk-size-in-azure">Verkleinen OS Disk Size in Azure</h1>
+<h3 id="-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress &lt;==</h3>
+<h2 id="voorwoord">Voorwoord</h2>
+<p>SCOM Managed Instance is een op cloud gebasseerd alternatief voor System Center Operations Manager zoals we dat nu On-Premise kennen bij klanten.
+SCOM Managed Instance bied ons de kans om ons constant workloads (dus niet alleen VM&rsquo;s of SQL Databases) te bewaken en waar mogelijk met geautomatiseerde oplossingen problemen op te lossen op deze workloads (denk bijvoorbeeld aan stap 1 herstarten service, stap 2 restart server , stap 3 opnieuw installeren van applicatie, en als laatste stap een error er doen uitgaan naar de beheerder via mail of alleen via de portal)</p>
+<p>Het beheer beperkt zich niet alleen voor workloads in Azure, maar het is ook mogelijk (als er netwerk connecties zijn) om je workload wat On-Premise staat hierin toe te voegen.</p>
+<p><strong>Grootste voordeel</strong></p>
+<ul>
+<li>Investeringen die je gedaan hebt in de oude SCOM omgeving worden behouden, Management Packs kun je migreren naar de nieuwe omgeving</li>
+<li>Het beheer van de SCOM infratructuur is een stuk eenvoudiger geworden, alle met de cloud verbonden onderdelen worden beheerd door Microsoft. Je hebt dus geen enkel<br>
+omkijken meer naar je omgeving behalve SCOM zelf.</li>
+<li>Bij een migratie is er geen onderbreking wanneer je de workloads migreert naar de Cloud</li>
+<li>Migratie kun je doen vanuit een bestaand SCOM Manager setting.</li>
+<li>Je kunt je SCOM workloads beheren van overal. Je hoeft niet persee meer On-Premise te zijn om je workload te kunnen beheren.</li>
+</ul>
+<p><strong>SCOM MI Architecture</strong>
+<img src="/Images/SCOMMI/architecture.png" alt="Image"></p>
+<p>SCOM Mi bestaat uit 2 onderdelen.</p>
+<ul>
+<li>Microsoft-Managed part</li>
+<li>Customer-Managed part</li>
+</ul>
+<p>Hieronder is een gedetaileerde kaart waar uitgelegd wordt welk gedeelte in de subscription van Microsoft valt, Welk gedeelte in de subscription van je klant valt, en wat onpremise beheerd word.</p>
+<p><img src="/Images/SCOMMI/detailed.png" alt="Image"></p>
+<h2 id="deployen-van-scom-managed-instance">Deployen van SCOM Managed Instance.</h2>
+<p>Log in op de server via RDP.</p>
+<p><img src="/Images/ShrinkOS/rdp.png" alt="Image"></p>
+<p>Als je ingelogd bent ga je naar Disk Management.
+.</p>
+<p><img src="/Images/ShrinkOS/disk.png" alt="Image"></p>
+<p>Als diskmanagement geopend is kijk dan bij de C schijf hoeveel vrije ruimte je hebt. Zorg ervoor dat je genoeg over houd voor een groei. (+/- 15/20% over is voldoende)</p>
+<p><img src="/Images/ShrinkOS/diskc.png" alt="Image"></p>
+<p>Als we kijken in disk management zien we onderstaande disk nummer staan. onthou of bewaar deze, deze hebben we in het vervolg nog nodig.</p>
+<p><img src="/Images/ShrinkOS/disk0.png" alt="Image">
+Open vervolgens powershell en vul de onderstaande regel in om je disk te shrinken.</p>
+<pre tabindex="0"><code>Get-Partition -DiskNumber 0  (het disknummer is hetzelfde nummer als dat je hierboven hebt gevonden.)
+</code></pre><p><img src="/Images/ShrinkOS/disknumber.png" alt="Image"></p>
+<p>In bovenstaande voorbeeld zien we dat disknummer 4 de disk is die we moeten gebruiken omdat hier de C schijf op staat.
+In ons voorbeeld verkleinen we de disk naar 90Gb. Maar je kunt natuurlijk zelf kiezen wat voor jou het beste past.
+Vul volgende regel in in Powershell:</p>
+<pre tabindex="0"><code>Get-Partition -DiskNumber 0 -PartitionNumber 4 | Resize-Partition -Size 90GB
+</code></pre><p>Soms krijg je onderstaande error:</p>
+<p><img src="/Images/ShrinkOS/error.png" alt="Image"></p>
+<pre tabindex="0"><code>The specified shrink size is too big and will cause the volume to be smaller than the minimum volume size
+</code></pre><p>De oplossing is eigenlijk vrij simpel, probeer de powershell regel nog 2/3 keer en dan lukt het wel. dit omdat er gequery word en er soms files in een bepaald block in gebruik zijn.</p>
+<p><img src="/Images/ShrinkOS/disknew.png" alt="Image"></p>
+<p>Zet de machine uit via Shutdown:</p>
+<p><img src="/Images/ShrinkOS/shutdown.png" alt="Image"></p>
+<p>Als de machine uitstaat moeten we hem ook nog deallocate.
+Ga naar de azure portal en zoek op Virtual Machines.</p>
+<p><img src="/Images/ShrinkOS/VirtualMachines.png" alt="Image"></p>
+<p>Zoek op de virtuele machine en klik op Stop.
+<img src="/Images/ShrinkOS/stop.png" alt="Image"></p>
+<p>Als de machine gestopt is zie je ook dat hij op deallocated staat.
+<img src="/Images/ShrinkOS/stopped.png" alt="Image"></p>
+<p>Nu gaan we vanuit uw machine zelf een Powershell ISE opstarten en runnen daar een script.
+Ik zal hier eerst stap voor stap de gedeeltes uit het script doorlopen. aan aan het einde zal ik het complete script nog eens copieren.</p>
+<p>Eerst installeren we de Azure modules</p>
+<pre tabindex="0"><code>Install-Module -name Az
+</code></pre><p><img src="/Images/ShrinkOS/Azmodule.jpg" alt="Image"></p>
+<p>Hierna gaan we de informatie verzamelen die we later nodig hebben in het script</p>
+<pre tabindex="0"><code># Variables
+$DiskID = &#34;# eg. &#34;/subscriptions/203bdbf0-69bd-1a12-a894-a826cf0a34c8/resourcegroups/rg-server1-prod-1/providers/Microsoft.Compute/disks/Server1-Server1&#34;
+$VMName = &#34;eg. Vmname&#34;
+$DiskSizeGB = 90 (eq. DiskSize)
+$AzSubscription = &#34;eq. Subscription name&#34;
+</code></pre><p>De DiskId kun je ophalen in de Disk van de VM en dan naar Properties te gaan.
+<img src="/Images/ShrinkOS/disktype.png" alt="Image"></p>
+<p>Hierna maken we connectie met Azure.</p>
+<pre tabindex="0"><code># Login to Azure with your Admin Account:
+Connect-AzAccount
+</code></pre><p><img src="/Images/ShrinkOS/login.png" alt="Image"></p>
+<p>Daarna krijg je een melding dat de authenticatie succesvol was. Sluit je browser en ga terug naar Powershell ISE.
+<img src="/Images/ShrinkOS/loginsuccess.png" alt="Image"></p>
+<p>Je ziet in ISE dan dat er een connectie gemaakt is.</p>
+<p><img src="/Images/ShrinkOS/loginise.png" alt="Image"></p>
+<p>Nu gaan we de subscription selecteren waar de VM onder draait. (deze stap is alleen noodzakelijk als je meerdere subscriptions hebt.)</p>
+<pre tabindex="0"><code>#Provide the subscription Id of the subscription where VM is created
+Select-AzSubscription -Subscription $AzSubscription
+</code></pre><p><img src="/Images/ShrinkOS/selectsubscription.png" alt="Image"></p>
+<p>Hierna gaan we alle info ophalen van de VM waar het om gaat.</p>
+<pre tabindex="0"><code># VM to resize disk of
+$VM = Get-AzVm | ? Name -eq $VMName
+</code></pre><p><img src="/Images/ShrinkOS/outputvm.png" alt="Image"></p>
+<p>Nu gaan we een aantal informatie uit de vm en zijn disk halen.</p>
+<pre tabindex="0"><code>#Provide the name of your resource group where VM is created
+$resourceGroupName = $VM.ResourceGroupName
+
+# Get Disk from ID
+$Disk = Get-AzDisk | ? Id -eq $DiskID
+
+# Get VM/Disk generation from Disk
+$HyperVGen = $Disk.HyperVGeneration
+
+# Get Disk Name from Disk
+$DiskName = $Disk.Name
+</code></pre><p>Output ziet er als volgt uit:</p>
+<p>Voor $disk:
+<img src="/Images/ShrinkOS/disk1.png" alt="Image"></p>
+<p>Voor $HyperVGen:
+<img src="/Images/ShrinkOS/gen.png" alt="Image"></p>
+<p>Voor $DiskName:</p>
+<p><img src="/Images/ShrinkOS/diskname.png" alt="Image"></p>
+<p>Hierna gaan we een snapshot maken en een nieuwe disk met een kleinere ruimte op basis van de info die we hebben gegeven.
+We geven hierbij de SAS Read access.</p>
+<pre tabindex="0"><code># Get SAS URI for the Managed disk
+$SAS = Grant-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $DiskName -Access &#39;Read&#39; -DurationInSecond 600000;
+
+#Provide storage account name where you want to copy the snapshot - the script will create a new one temporarily
+$storageAccountName = &#34;shrink&#34; + [system.guid]::NewGuid().tostring().replace(&#39;-&#39;,&#39;&#39;).substring(1,18)
+
+#Name of the storage container where the downloaded snapshot will be stored
+$storageContainerName = $storageAccountName
+
+#Provide the name of the VHD file to which snapshot will be copied.
+$destinationVHDFileName = &#34;$($VM.StorageProfile.OsDisk.Name).vhd&#34;
+
+#Create the context for the storage account which will be used to copy snapshot to the storage account 
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -SkuName Standard_LRS -Location $VM.Location
+$destinationContext = $StorageAccount.Context
+$container = New-AzStorageContainer -Name $storageContainerName -Permission Off -Context $destinationContext
+
+#Copy the snapshot to the storage account and wait for it to complete
+Start-AzStorageBlobCopy -AbsoluteUri $SAS.AccessSAS -DestContainer $storageContainerName -DestBlob $destinationVHDFileName -DestContext $destinationContext
+while(($state = Get-AzStorageBlobCopyState -Context $destinationContext -Blob $destinationVHDFileName -Container $storageContainerName).Status -ne &#34;Success&#34;) { $state; Start-Sleep -Seconds 20 }
+$state
+
+# Revoke SAS token
+Revoke-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $DiskName
+
+# Emtpy disk to get footer from
+$emptydiskforfootername = &#34;$($VM.StorageProfile.OsDisk.Name)-empty.vhd&#34;
+
+$diskConfig = New-AzDiskConfig `
+    -Location $VM.Location `
+    -Zone $VM.Zones `
+    -CreateOption Empty `
+    -DiskSizeGB $DiskSizeGB `
+    -HyperVGeneration $HyperVGen
+
+$dataDisk = New-AzDisk `
+    -ResourceGroupName $resourceGroupName `
+    -DiskName $emptydiskforfootername `
+    -Disk $diskConfig
+
+$VM = Add-AzVMDataDisk `
+    -VM $VM `
+    -Name $emptydiskforfootername `
+    -CreateOption Attach `
+    -ManagedDiskId $dataDisk.Id `
+    -Lun 63
+
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+$VM | Stop-AzVM -Force
+
+
+# Get SAS token for the empty disk
+$SAS = Grant-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername -Access &#39;Read&#39; -DurationInSecond 600000;
+
+# Copy the empty disk to blob storage
+Start-AzStorageBlobCopy -AbsoluteUri $SAS.AccessSAS -DestContainer $storageContainerName -DestBlob $emptydiskforfootername -DestContext $destinationContext
+while(($state = Get-AzStorageBlobCopyState -Context $destinationContext -Blob $emptydiskforfootername -Container $storageContainerName).Status -ne &#34;Success&#34;) { $state; Start-Sleep -Seconds 20 }
+$state
+
+# Revoke SAS token
+Revoke-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername
+
+# Remove temp empty disk
+Remove-AzVMDataDisk -VM $VM -DataDiskNames $emptydiskforfootername
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+# Delete temp disk
+Remove-AzDisk -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername -Force;
+
+# Get the blobs
+$emptyDiskblob = Get-AzStorageBlob -Context $destinationContext -Container $storageContainerName -Blob $emptydiskforfootername
+$osdisk = Get-AzStorageBlob -Context $destinationContext -Container $storageContainerName -Blob $destinationVHDFileName
+
+$footer = New-Object -TypeName byte[] -ArgumentList 512
+write-output &#34;Get footer of empty disk&#34;
+
+$downloaded = $emptyDiskblob.ICloudBlob.DownloadRangeToByteArray($footer, 0, $emptyDiskblob.Length - 512, 512)
+
+$osDisk.ICloudBlob.Resize($emptyDiskblob.Length)
+$footerStream = New-Object -TypeName System.IO.MemoryStream -ArgumentList (,$footer)
+write-output &#34;Write footer of empty disk to OSDisk&#34;
+$osDisk.ICloudBlob.WritePages($footerStream, $emptyDiskblob.Length - 512)
+
+Write-Output -InputObject &#34;Removing empty disk blobs&#34;
+$emptyDiskblob | Remove-AzStorageBlob -Force
+
+
+#Provide the name of the Managed Disk
+$NewDiskName = &#34;$DiskName&#34; + &#34;-new&#34;
+
+#Create the new disk with the same SKU as the current one
+$accountType = $Disk.Sku.Name
+
+# Get the new disk URI
+$vhdUri = $osdisk.ICloudBlob.Uri.AbsoluteUri
+
+# Specify the disk options
+$diskConfig = New-AzDiskConfig -AccountType $accountType -Location $VM.location -Zone $VM.Zones -DiskSizeGB $DiskSizeGB -SourceUri $vhdUri -CreateOption Import -StorageAccountId $StorageAccount.Id -HyperVGeneration $HyperVGen
+
+# Handle Trusted Launch VMs/Disks
+If($Disk.SecurityProfile.SecurityType -eq &#34;TrustedLaunch&#34;){
+    $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType &#34;TrustedLaunch&#34;
+}
+</code></pre><p>Om het niet te uitgebreid te aken zal ik niet van alles een export maken. Maar als je het runt zie je wel onderstaande melding lopen tot de copy slag gelukt is.</p>
+<p><img src="/Images/ShrinkOS/Copy.png" alt="Image"></p>
+<p>Als de copy slag helemelaal gelukt is krijg je de volgende melding:</p>
+<p><img src="/Images/ShrinkOS/outcome.png" alt="Image"></p>
+<p>Hierna gaan e een nieuwe disk maken op basis van de info die in het vorige stuk gezet is. (bijvoorbeeld de grote maar ook de Security Type)</p>
+<pre tabindex="0"><code>$NewManagedDisk = New-AzDisk -DiskName $NewDiskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+</code></pre><p>Deze disk is vrijsnel aangemaakt en je krijgt een id met daarin de nieuwe naam</p>
+<p><img src="/Images/ShrinkOS/newdisk.png" alt="Image"></p>
+<p>Nu stoppen we de bestaande VM.Deze is tijdens het script na een Update weer gestart.</p>
+<pre tabindex="0"><code>$VM | Stop-AzVM -Force
+</code></pre><p><img src="/Images/ShrinkOS/stopvm.png" alt="Image"></p>
+<p>Hierna gaan we de Configuratie aanpassen, de disk koppelen aan de VM en de machine weer starten..</p>
+<pre tabindex="0"><code># Set the VM configuration to point to the new disk  
+Set-AzVMOSDisk -VM $VM -ManagedDiskId $NewManagedDisk.Id -Name $NewManagedDisk.Name
+
+# Update the VM with the new OS disk
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+$VM | Start-AzVM
+</code></pre><p><img src="/Images/ShrinkOS/klaar.png" alt="Image"></p>
+<p>We hebben nu in het script een pauze gebouwd van 3 minuten om te zorgen dat de disk goed gesync word en de machine helemaal gestart is.</p>
+<p>De laatste stap in het script is het verwijderen van de oude disk blob storage en het tijdelijke storage account.</p>
+<pre tabindex="0"><code># Delete old Managed Disk
+Remove-AzDisk -ResourceGroupName $resourceGroupName -DiskName $DiskName -Force;
+
+# Delete old blob storage
+$osdisk | Remove-AzStorageBlob -Force
+
+# Delete temp storage account
+$StorageAccount | Remove-AzStorageAccount -Force
+</code></pre><p>Nu is de machine actief met een nieuwe disk.</p>
+<p><img src="/Images/ShrinkOS/newestdisk.png" alt="Image"></p>
+<p>Zoals beloofd hier nog even het hele script, daarna gaan we verder met de configuratie in de VM.</p>
+<pre tabindex="0"><code># Variables
+$DiskID = &#34;# eg. &#34;/subscriptions/203bdbf0-69bd-1a12-a894-a826cf0a34c8/resourcegroups/rg-server1-prod-1/providers/Microsoft.Compute/disks/Server1-Server1&#34;
+$VMName = &#34;eg. Vmname&#34;
+$DiskSizeGB = 90 (eq. DiskSize)
+$AzSubscription = &#34;eq. Subscription name&#34;
+# Script
+# Login to Azure with your Admin Account:
+Connect-AzAccount
+
+#Provide the subscription Id of the subscription where VM is created
+Select-AzSubscription -Subscription $AzSubscription
+
+# VM to resize disk of
+$VM = Get-AzVm | ? Name -eq $VMName
+
+#Provide the name of your resource group where VM is created
+$resourceGroupName = $VM.ResourceGroupName
+
+# Get Disk from DiskID
+$Disk = Get-AzDisk | ? Id -eq $DiskID
+
+# Get VM/Disk generation from Disk
+$HyperVGen = $Disk.HyperVGeneration
+
+# Get Disk Name from Disk
+$DiskName = $Disk.Name
+
+# Get SAS URI for the Managed disk
+$SAS = Grant-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $DiskName -Access &#39;Read&#39; -DurationInSecond 600000;
+
+#Provide storage account name where you want to copy the snapshot - the script will create a new one temporarily
+$storageAccountName = &#34;shrink&#34; + [system.guid]::NewGuid().tostring().replace(&#39;-&#39;,&#39;&#39;).substring(1,18)
+
+#Name of the storage container where the downloaded snapshot will be stored
+$storageContainerName = $storageAccountName
+
+#Provide the name of the VHD file to which snapshot will be copied.
+$destinationVHDFileName = &#34;$($VM.StorageProfile.OsDisk.Name).vhd&#34;
+
+#Create the context for the storage account which will be used to copy snapshot to the storage account 
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -SkuName Standard_LRS -Location $VM.Location
+$destinationContext = $StorageAccount.Context
+$container = New-AzStorageContainer -Name $storageContainerName -Permission Off -Context $destinationContext
+
+#Copy the snapshot to the storage account and wait for it to complete
+Start-AzStorageBlobCopy -AbsoluteUri $SAS.AccessSAS -DestContainer $storageContainerName -DestBlob $destinationVHDFileName -DestContext $destinationContext
+while(($state = Get-AzStorageBlobCopyState -Context $destinationContext -Blob $destinationVHDFileName -Container $storageContainerName).Status -ne &#34;Success&#34;) { $state; Start-Sleep -Seconds 20 }
+$state
+
+# Revoke SAS token
+Revoke-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $DiskName
+
+# Emtpy disk to get footer from
+$emptydiskforfootername = &#34;$($VM.StorageProfile.OsDisk.Name)-empty.vhd&#34;
+
+$diskConfig = New-AzDiskConfig `
+    -Location $VM.Location `
+    -Zone $VM.Zones `
+    -CreateOption Empty `
+    -DiskSizeGB $DiskSizeGB `
+    -HyperVGeneration $HyperVGen
+
+$dataDisk = New-AzDisk `
+    -ResourceGroupName $resourceGroupName `
+    -DiskName $emptydiskforfootername `
+    -Disk $diskConfig
+
+$VM = Add-AzVMDataDisk `
+    -VM $VM `
+    -Name $emptydiskforfootername `
+    -CreateOption Attach `
+    -ManagedDiskId $dataDisk.Id `
+    -Lun 63
+
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+$VM | Stop-AzVM -Force
+
+
+# Get SAS token for the empty disk
+$SAS = Grant-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername -Access &#39;Read&#39; -DurationInSecond 600000;
+
+# Copy the empty disk to blob storage
+Start-AzStorageBlobCopy -AbsoluteUri $SAS.AccessSAS -DestContainer $storageContainerName -DestBlob $emptydiskforfootername -DestContext $destinationContext
+while(($state = Get-AzStorageBlobCopyState -Context $destinationContext -Blob $emptydiskforfootername -Container $storageContainerName).Status -ne &#34;Success&#34;) { $state; Start-Sleep -Seconds 20 }
+$state
+
+# Revoke SAS token
+Revoke-AzDiskAccess -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername
+
+# Remove temp empty disk
+Remove-AzVMDataDisk -VM $VM -DataDiskNames $emptydiskforfootername
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+# Delete temp disk
+Remove-AzDisk -ResourceGroupName $resourceGroupName -DiskName $emptydiskforfootername -Force;
+
+# Get the blobs
+$emptyDiskblob = Get-AzStorageBlob -Context $destinationContext -Container $storageContainerName -Blob $emptydiskforfootername
+$osdisk = Get-AzStorageBlob -Context $destinationContext -Container $storageContainerName -Blob $destinationVHDFileName
+
+$footer = New-Object -TypeName byte[] -ArgumentList 512
+write-output &#34;Get footer of empty disk&#34;
+
+$downloaded = $emptyDiskblob.ICloudBlob.DownloadRangeToByteArray($footer, 0, $emptyDiskblob.Length - 512, 512)
+
+$osDisk.ICloudBlob.Resize($emptyDiskblob.Length)
+$footerStream = New-Object -TypeName System.IO.MemoryStream -ArgumentList (,$footer)
+write-output &#34;Write footer of empty disk to OSDisk&#34;
+$osDisk.ICloudBlob.WritePages($footerStream, $emptyDiskblob.Length - 512)
+
+Write-Output -InputObject &#34;Removing empty disk blobs&#34;
+$emptyDiskblob | Remove-AzStorageBlob -Force
+
+
+#Provide the name of the Managed Disk
+$NewDiskName = &#34;$DiskName&#34; + &#34;-new&#34;
+
+#Create the new disk with the same SKU as the current one
+$accountType = $Disk.Sku.Name
+
+# Get the new disk URI
+$vhdUri = $osdisk.ICloudBlob.Uri.AbsoluteUri
+
+# Specify the disk options
+$diskConfig = New-AzDiskConfig -AccountType $accountType -Location $VM.location -Zone $VM.Zones -DiskSizeGB $DiskSizeGB -SourceUri $vhdUri -CreateOption Import -StorageAccountId $StorageAccount.Id -HyperVGeneration $HyperVGen
+
+# Handle Trusted Launch VMs/Disks
+If($Disk.SecurityProfile.SecurityType -eq &#34;TrustedLaunch&#34;){
+    $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType &#34;TrustedLaunch&#34;
+}
+
+#Create Managed disk
+$NewManagedDisk = New-AzDisk -DiskName $NewDiskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+
+$VM | Stop-AzVM -Force
+
+# Set the VM configuration to point to the new disk  
+Set-AzVMOSDisk -VM $VM -ManagedDiskId $NewManagedDisk.Id -Name $NewManagedDisk.Name
+
+# Update the VM with the new OS disk
+Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+$VM | Start-AzVM
+
+start-sleep 180
+# Please check the VM is running before proceeding with the below tidy-up steps
+
+# Delete old Managed Disk
+Remove-AzDisk -ResourceGroupName $resourceGroupName -DiskName $DiskName -Force;
+
+# Delete old blob storage
+$osdisk | Remove-AzStorageBlob -Force
+
+# Delete temp storage account
+$StorageAccount | Remove-AzStorageAccount -Force
+</code></pre><p>Als je nu naar de VM gaat in Azure en dan naar disks zie je dat de disk grootte ook aangepast is naar de 90Gb die we eerder hebben opgegeven.
+<img src="/Images/ShrinkOS/diskazure.png" alt="Image"></p>
+<p>Log nu in op de server en open DiskManagement. Je zult zien dat er nu nog een heel klein beetje aan Unallocated storage aanwezig is.
+Klik op de C schijf en klik daarna op Extend Volume.
+<img src="/Images/ShrinkOS/ExtendVolume.png" alt="Image"></p>
+<p>Daarna krijg je de Extend Volume Wizard en selecteer de openstaande ruimte. en klik daarna op Next.</p>
+<p><img src="/Images/ShrinkOS/Extend1.png" alt="Image"></p>
+<p>Klik daarna op Finish</p>
+<p><img src="/Images/ShrinkOS/Extend2.png" alt="Image"></p>
+<p>Nu heb je je OS disk succesvol kleiner gemaakt, Als je dit bij meerdere Servers kunt doen heb je een behoorlijke kostenbesparing kunnen uitvoeren voor je werkgever.</p>
+
+<div class="px-2 mb-2">
+  
+  <script src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+  
+</div>
+</article><div class="bg-blue-100 dark:bg-gray-900">
+  <div class="container px-4 py-12 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+    <div>
+      <div class="text-2xl font-bold mb-2">Wil je me volgen op Linkedin, Github of Youtube?</div>
+      <p class="opacity-60"></p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+    <ul class="flex justify-center gap-x-3 flex-wrap gap-y-2">
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.linkedin.com/in/andy-clifton-4b497bb6/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <line x1="8" y1="11" x2="8" y2="16" />
+            <line x1="8" y1="8" x2="8" y2="8.01" />
+            <line x1="12" y1="16" x2="12" y2="11" />
+            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://github.com/AndyClifton2"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+            />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.youtube.com/@AzureAdventurer"
+          target="_blank"
+          rel="noopener"
+          aria-label="YouTube"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-youtube"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="12" cy="12" r="9" />
+            <path d="M10 9l5 3l-5 3z" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+    </ul>
+  </div>
+</div>
+
+    </main><footer class="container p-6 mx-auto flex justify-between items-center">
+  <span class="text-sm font-light">
+    
+    Copyright © 2024 - Andy Clifton · All rights reserved
+    
+  </span>
+  <span onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-1 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 15l-6 -6l-6 6h12" />
+    </svg>
+  </span>
+</footer>
+
+<div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden">
+  <div class="container max-w-3xl mx-auto p-12">
+    <div class="relative">
+      <div class="my-4 text-center text-2xl font-bold">Search</div>
+
+      <span class="p-2 absolute right-0 top-0 cursor-pointer close-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </span>
+    </div>
+
+    <input type="search" class="py-2 px-3 w-full dark:text-black border dark:border-transparent"
+      placeholder="Enter search query" />
+
+    <div class="search-results text-lg font-medium my-4 hidden">Results</div>
+    <ul class="search-list my-2">
+
+    </ul>
+
+    <div class="no-results text-center my-8 hidden">
+      <div class="text-xl font-semibold mb-2">No results found</div>
+      <p class="font-light text-sm">Try adjusting your search query</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="//localhost:1313/js/scripts.min.js"></script>
+
+
+
+
+
+
+
+<script>
+  
+  const darkmode = document.querySelector('.toggle-dark-mode');
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('darkmode', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('darkmode', 'dark')
+    }
+  }
+  if (darkmode) {
+    darkmode.addEventListener('click', toggleDarkMode);
+  }
+
+  const darkStorage = localStorage.getItem('darkmode');
+  const isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (!darkStorage && isBrowserDark) {
+    document.documentElement.classList.add('dark');
+  }
+
+  if (darkStorage && darkStorage === 'dark') {
+    toggleDarkMode();
+  }
+</script>
+
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button')
+  const mobileMenu = document.querySelector('.mobile-menu')
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+  if(mobileMenu && mobileMenuButton){
+    mobileMenuButton.addEventListener('click', toggleMenu)
+  }
+</script>
+</body>
+</html>

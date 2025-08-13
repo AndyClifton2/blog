@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" href="/favicon.svg">
+
+  <title>
+  Disk Encryptie in Azure VMs - Andy Cliftons Blog
+  </title>
+  <meta name="description" content="Disk Encryptie in Azure VMs." />
+  <meta name="author" content="Andy Clifton" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="stylesheet" href="/css/styles.css" />
+  
+  
+
+  <meta property="og:url" content="//localhost:1313/en/blog/disk-encryptie-in-azure-vms/">
+  <meta property="og:site_name" content="Andy Cliftons Blog">
+  <meta property="og:title" content="Disk Encryptie in Azure VMs">
+  <meta property="og:description" content="Disk Encryptie in Azure VMs.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2023-02-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-02-16T00:00:00+00:00">
+    <meta property="article:tag" content="AzureB2B">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Disk Encryptie in Azure VMs">
+  <meta name="twitter:description" content="Disk Encryptie in Azure VMs.">
+
+  
+  <meta itemprop="name" content="Disk Encryptie in Azure VMs">
+  <meta itemprop="description" content="Disk Encryptie in Azure VMs.">
+  <meta itemprop="datePublished" content="2023-02-16T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-02-16T00:00:00+00:00">
+  <meta itemprop="wordCount" content="994">
+  <meta itemprop="keywords" content="AzureB2B">
+
+  
+</head>
+<body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative">
+  <a href="//localhost:1313/en/" class="capitalize font-extrabold text-2xl">
+    
+    <img src="/raw.png" alt="Andy Cliftons Blog" class="h-8 max-w-full" />
+    
+  </a>
+  <button class="mobile-menu-button md:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <line x1="4" y1="8" x2="20" y2="8" />
+      <line x1="4" y1="16" x2="20" y2="16" />
+    </svg>
+  </button>
+  <ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800">
+
+    
+    <li><a href="/en/blog">Blogs</a></li>
+    
+    <li><a href="/en/page/about/">Over Mij</a></li>
+    
+
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="open-search inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="10" cy="10" r="7" />
+          <line x1="21" y1="21" x2="15" y2="15" />
+        </svg>
+      </span>
+    </li>
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="toggle-dark-mode inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="3" />
+          <line x1="12" y1="5" x2="12" y2="5.01" />
+          <line x1="17" y1="7" x2="17" y2="7.01" />
+          <line x1="19" y1="12" x2="19" y2="12.01" />
+          <line x1="17" y1="17" x2="17" y2="17.01" />
+          <line x1="12" y1="19" x2="12" y2="19.01" />
+          <line x1="7" y1="17" x2="7" y2="17.01" />
+          <line x1="5" y1="12" x2="5" y2="12.01" />
+          <line x1="7" y1="7" x2="7" y2="7.01" />
+        </svg>
+      </span>
+    </li>
+    
+  </ul>
+</header>
+<main class="flex-1">
+  
+  
+
+  
+  <div class="relative max-w-5xl mx-auto px-4">
+    <img src="/img/DiskEncryption.png" class="rounded-lg shadow-sm w-full object-contain" />
+    
+    <div class="absolute top-4 right-8 rounded shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-2 py-0.5">
+      February 16, 2023
+    </div>
+    
+  </div>
+  
+
+  <article class="prose lg:prose-lg mx-auto my-8 dark:prose-dark px-4">
+
+    <h1 class="text-2xl font-bold mb-2">Disk Encryptie in Azure VMs</h1>
+    
+    <h5 class="text-sm flex items-center flex-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <line x1="16" y1="3" x2="16" y2="7" />
+        <line x1="8" y1="3" x2="8" y2="7" />
+        <line x1="4" y1="11" x2="20" y2="11" />
+        <rect x="8" y="15" width="2" height="2" />
+      </svg>
+      Posted on February 16, 2023
+      
+        &nbsp;&bull;&nbsp;
+      
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+      </svg>
+      5 minutes
+      &nbsp;&bull;
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <line x1="3" y1="6" x2="3" y2="19" />
+        <line x1="12" y1="6" x2="12" y2="19" />
+        <line x1="21" y1="6" x2="21" y2="19" />
+      </svg>
+      994 words
+      
+        
+      
+    </h5>
+    
+
+    <details id="TableOfContents" class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc">
+    <summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white">
+      <span>Table of contents</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <polyline points="6 9 12 15 18 9"></polyline>
+     </svg>
+    </summary>
+
+    <ul class="mt-2 pb-4">
+        
+
+        
+        <li>
+        <a href="#disk-encryptie-in-azure-vms">Disk Encryptie in Azure VMs</a>
+        
+
+        
+        <ul>
+            <ul>
+            <li>
+        <a href="#-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress &lt;==</a>
+        
+
+        
+        </li></ul>
+          <li>
+        <a href="#voorwoord">Voorwoord</a>
+        
+
+        
+        </li><li>
+        <a href="#inrichten-van-de-key-vault">Inrichten van de Key Vault</a>
+        
+
+        
+        </li><li>
+        <a href="#encrypt-een-vm-via-de-azure-portal">Encrypt een VM via de Azure Portal.</a>
+        
+
+        
+        </li><li>
+        <a href="#schijven-en-encryptie-scenarios-beheren">Schijven en encryptie scenario’s beheren.</a>
+        
+
+        
+        </li><li>
+        <a href="#disk-encryptie-gebruiken-met-powershell">Disk Encryptie gebruiken met PowerShell</a>
+        </li></ul>
+    </li></ul>
+  </details>
+
+    <h1 id="disk-encryptie-in-azure-vms">Disk Encryptie in Azure VMs</h1>
+<h3 id="-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress &lt;==</h3>
+<h2 id="voorwoord">Voorwoord</h2>
+<p>In het verleden vereiste het proces van het encrypten van een virtuele machine in Microsoft Azure een AD App account om het werk uit te kunnen voeren.
+Tegenwoordig hebben we een eenvoudigere manier om onze VM’s in Microsoft Azure te encrypten en deze nieuwe methode is geïntegreerd in de Azure Portal.
+In dit artikel gaan we de basisprincipes behandelen om encryptie in te schakelen met behulp van de nieuwe methode, inclusief het maken van een Azure Key Vault.
+We nemen ook de stappen door die kunnen worden uitgevoerd in de Azure Portal en de Powershell functies om het encryptieproces te ondersteunen.</p>
+<p><img src="/Images/Encryptie/Diagram.png" alt="Image"></p>
+<h2 id="inrichten-van-de-key-vault">Inrichten van de Key Vault</h2>
+<p>De eerste stap is het creëren van een Key Vault.
+Log in op de Azure portal en klik op <strong>Create a resource</strong>.</p>
+<p><img src="/Images/Encryptie/CreateResource.png" alt="Image"></p>
+<p>Vul in <strong>Key vault</strong> en klik op <strong>Create</strong>.</p>
+<p><img src="/Images/Encryptie/CreateKeyvault.png" alt="Image"></p>
+<p>Een nieuwe wizard zal naar voren komen. En hier kunnen we alle basisinstellingen configureren die we nodig hebben om de nieuwe Key Vault met nieuwe schijf encryption te gaan gebruiken.</p>
+<p>Vul in:</p>
+<pre tabindex="0"><code>Key vault name = Naam 
+Region = Regio
+Pricing Tier = Standard of Premium
+</code></pre><p><img src="/Images/Encryptie/KeyvaultSettings.png" alt="Image"></p>
+<p>Klik op <strong>Next</strong> en we gaan naar Access Policy.
+Zorg ervoor dat het vinkje staat bij <strong>Azure Disk encryption for volume encryption</strong>.</p>
+<p><img src="/Images/Encryptie/ResourceAccess.png" alt="Image"></p>
+<p>Klik op <strong>review+ create</strong> om de inrichting van de KeyVault te starten.</p>
+<blockquote>
+<p><strong><em>Notitie:</em></strong> Als je een hub- en spoke- topologie gebruikt, is het gebruik van een Key Vault op je shared infrastructure bij de hub de juiste manier.
+Op deze manier maken al je encrypted VM’s gebruik van de centralized keys om hun schijven op te slaan en te encrypten.</p></blockquote>
+<p>Na het maken van de Key Vault is onze volgende stap het maken van onze eerste set van Keys. Open de net aangemaakte Key Vault en klik onder objects op <strong>Keys</strong>.</p>
+<p>Klik op <strong>Generate/Import</strong>.</p>
+<p><img src="/Images/Encryptie/Keys.png" alt="Image"></p>
+<p>Op de Create a Key pagina selecteer het volgende:</p>
+<pre tabindex="0"><code>Options = Generate
+Name = Vul een logische naamgeving in
+Key type = RSA
+RSA key size = minimum 2048
+Enabled = Yes
+</code></pre><p><img src="/Images/Encryptie/CreateKeys.png" alt="Image"></p>
+<h2 id="encrypt-een-vm-via-de-azure-portal">Encrypt een VM via de Azure Portal.</h2>
+<p>Tegenwoordig biedt de Azure Portal een eenvoudige manier om uw VM te encrypten met integratie van Azure Key Vault.
+Klik in de VM waar we de schijf willen encrypten op Disks (nummer 1) en een lijst met alle schijven die aan de gegeven VM gekoppeld zijn, wordt weergegeven.
+Bij nummer 3 kunnen we de huidige status van de encryption  voor een bepaalde schijf zien.
+Om het coderingsproces te starten klikken we op Encryption (nummer 2)</p>
+<p><img src="/Images/Encryptie/EncryptDisk.png" alt="Image"></p>
+<p>In het nieuwe tabblad hebben we drie opties: Geen (no encryption), OS disk (alleen de schijf met het operating system), of OS and data disk (alle schijven op deze VM).</p>
+<p>Op de Encryption settings pagina selecteer het volgende:</p>
+<pre tabindex="0"><code>Disk to Encrypt = OS Disk
+Key Vault =  de aangemaakte Key Vault
+Key =  Selecteer de Key.
+Version = Versie 
+</code></pre><p><img src="/Images/Encryptie/Encryptionsettings.png" alt="Image"></p>
+<p>Selecteer de Key die we zojuist hebben aangemaakt en klik daarna op Save.</p>
+<p>Zodra je op opslaan klikt, wordt een dialoogvenster weergegeven waarin om een bevestiging gevraagd wordt, Klik op Ja.
+Dit proces zorgt ervoor dat de VM opnieuw wordt opgestart, zorg ervoor dat je dit doet tijdens gepland onderhoud of als de gebruikers hiervan op de hoogte zijn.</p>
+<p>Als onderdeel van de restart, zal de AzureDiskEncryption als extensie toegevoegd worden aan de VM.</p>
+<p><img src="/Images/Encryptie/AzureDiskEncryptionExtensie.png" alt="Image"></p>
+<h2 id="schijven-en-encryptie-scenarios-beheren">Schijven en encryptie scenario’s beheren.</h2>
+<p>Life is good, de schijf van het besturingssysteem wordt geëncrypt.
+Een ding is echter zeker, er zullen nu veranderingen plaatsvinden!
+Laten we een aantal mogelijke scenario’s uitvoeren bij het beheren van schijf encryption om te zien hoe je moet handelen wanneer deze acties zich voordoen.</p>
+<p>Laten we beginnen met een vereiste om een nieuwe data schijf toe te voegen aan dezelfde VM waaraan we tijdens dit artikel ook gewerkt hebben.
+Het belangrijkste (voordat u nadenkt over encryption) is om te begrijpen dat de schijf aanwezig moet zijn, en in het besturingssysteem geconnect moet zijn om de encryption te laten werken.
+Als je de schijf toevoegt via de Azure Portal, wordt de schijf op de VM weergegeven als niet-geïnitialiseerd  en wordt deze niet gecodeerd.
+Zorg ervoor dat u een letter op de schijf initialiseert, formatteert en toewijst.</p>
+<p>Nadat u de nieuwe schijf aan het besturingssysteem hebt gepresenteerd,
+gaat u terug naar de knop encryption en wijzigt u de gegevens in besturingssysteem en gegevensschijven en drukt u op opslaan.</p>
+<p>Op dit moment is een herstart niet nodig en na de voltooiing worden de nieuwe schijven encrypt.</p>
+<p><img src="/Images/Encryptie/Encryptdatadisk.png" alt="Image"></p>
+<p>We kunnen de encryption in actie zien in de onderstaande afbeelding.
+We hebben zojuist een nieuw volume toegevoegd (Letter D:). Na het uitvoeren van de bovenstaande procedure is de nieuwe schijf geëncrypt als onderdeel van het proces.
+<img src="/Images/Encryptie/DataDisk.png" alt="Image"></p>
+<p>Wanneer je nieuwe schijven toevoegt aan de VM, moeten we het proces herhalen om de nieuwe schijven ook te versleutelen. (Houd hier rekening mee).</p>
+<h2 id="disk-encryptie-gebruiken-met-powershell">Disk Encryptie gebruiken met PowerShell</h2>
+<p>Met al die informatie zou de PowerShell cmdlet (<strong>Set-AzVMDiskEncryptionExentsion</strong> ) vergelijkbaar zijn met de onderstaande cmdlet.</p>
+<pre tabindex="0"><code>Set-AzVmDiskEncryptionExtension -ResourceGroupName &lt;ResourceGroupName&gt; -VMName &lt;VMName&gt; -DiskEncryptionKeyVaultId  &lt;Key Vault Resource ID&gt; -DiskEncryptionKeyVaultUrl &lt;Key Vault URL&gt; -KeyEncryptionKeyVaultId &lt;Key Vault Resource ID&gt; -KeyEncryptionKeyUrl &lt;Key URL&gt; -VolumeType &#34;All&#34;
+</code></pre><p>Ik moet toegeven dat het verzamelen van alle informatie zeker geen makkelijke job is, omdat je die informatie moet ophalen met behulp van 2 cmdlets en de stukjes bij elkaar moet zetten om de bovenstaande cmdlet te maken.
+Ik heb hiervoor een functie gevonden om het proces verder te automatiseren, je moet hiervoor de Key Vault naam, Key naam en de VM naam opgeven.
+De functie verzamelt alle vereiste informatie in variabelen en start de encryptie van alle schijven op de aangeleverde VM.
+Hier is de code voor de functie en om deze in een Powershell-sessie te gebruiken,vul in EncryptVM -Keyvaultname,KeyName,VMname</p>
+<pre tabindex="0"><code>Function EncryptVM($KeyVault,$KeyName,$VM){
+$kv = Get-azKeyVault -VaultName $KeyVault
+$key = get-Azkeyvaultkey -Name $KeyName -VaultName $KeyVault
+Set-AzVmDiskEncryptionExtension -ResourceGroupName $kv.ResourceGroupName `
+-DiskEncryptionKeyVaultId  $kv.ResourceID `
+-DiskEncryptionKeyVaultUrl $kv.VaultURI `
+-VMName $VM -KeyEncryptionKeyVaultId $kv.ResourceID `-KeyEncryptionKeyUrl $key.id -SkipVmBackup -VolumeType &#34;All&#34;}
+</code></pre><p>Meer informatie over schijf encryptie vind je <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/windows/disk-encryption-faq#can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption" target="_blank" rel="noopener">hier</a>
+</p>
+
+<div class="px-2 mb-2">
+  
+  <script src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+  
+</div>
+</article><div class="bg-blue-100 dark:bg-gray-900">
+  <div class="container px-4 py-12 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+    <div>
+      <div class="text-2xl font-bold mb-2">Wil je me volgen op Linkedin, Github of Youtube?</div>
+      <p class="opacity-60"></p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+    <ul class="flex justify-center gap-x-3 flex-wrap gap-y-2">
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.linkedin.com/in/andy-clifton-4b497bb6/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <line x1="8" y1="11" x2="8" y2="16" />
+            <line x1="8" y1="8" x2="8" y2="8.01" />
+            <line x1="12" y1="16" x2="12" y2="11" />
+            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://github.com/AndyClifton2"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+            />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.youtube.com/@AzureAdventurer"
+          target="_blank"
+          rel="noopener"
+          aria-label="YouTube"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-youtube"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="12" cy="12" r="9" />
+            <path d="M10 9l5 3l-5 3z" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+    </ul>
+  </div>
+</div>
+
+    </main><footer class="container p-6 mx-auto flex justify-between items-center">
+  <span class="text-sm font-light">
+    
+    Copyright © 2024 - Andy Clifton · All rights reserved
+    
+  </span>
+  <span onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-1 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 15l-6 -6l-6 6h12" />
+    </svg>
+  </span>
+</footer>
+
+<div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden">
+  <div class="container max-w-3xl mx-auto p-12">
+    <div class="relative">
+      <div class="my-4 text-center text-2xl font-bold">Search</div>
+
+      <span class="p-2 absolute right-0 top-0 cursor-pointer close-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </span>
+    </div>
+
+    <input type="search" class="py-2 px-3 w-full dark:text-black border dark:border-transparent"
+      placeholder="Enter search query" />
+
+    <div class="search-results text-lg font-medium my-4 hidden">Results</div>
+    <ul class="search-list my-2">
+
+    </ul>
+
+    <div class="no-results text-center my-8 hidden">
+      <div class="text-xl font-semibold mb-2">No results found</div>
+      <p class="font-light text-sm">Try adjusting your search query</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="//localhost:1313/js/scripts.min.js"></script>
+
+
+
+
+
+
+
+<script>
+  
+  const darkmode = document.querySelector('.toggle-dark-mode');
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('darkmode', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('darkmode', 'dark')
+    }
+  }
+  if (darkmode) {
+    darkmode.addEventListener('click', toggleDarkMode);
+  }
+
+  const darkStorage = localStorage.getItem('darkmode');
+  const isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (!darkStorage && isBrowserDark) {
+    document.documentElement.classList.add('dark');
+  }
+
+  if (darkStorage && darkStorage === 'dark') {
+    toggleDarkMode();
+  }
+</script>
+
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button')
+  const mobileMenu = document.querySelector('.mobile-menu')
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+  if(mobileMenu && mobileMenuButton){
+    mobileMenuButton.addEventListener('click', toggleMenu)
+  }
+</script>
+</body>
+</html>

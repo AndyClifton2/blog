@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Disater,Recovery on Andy Cliftons Blog</title>
+    <link>//localhost:1313/en/tags/disaterrecovery/</link>
+    <description>Recent content in Disater,Recovery on Andy Cliftons Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/en/tags/disaterrecovery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disaster Recovery</title>
+      <link>//localhost:1313/en/blog/disaster-recovery/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/disaster-recovery/</guid>
+      <description>&lt;h1 id=&#34;disaster-recovery&#34;&gt;Disaster Recovery&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Als je een virtuele machine hebt draaien in Azure en je wilt er voor zorgen dat je machines zoveel mogelijk beschermd zijn tegen downtime, dan zijn er meerdere dingen die je wilt bekijken in de termen van availability.&#xA;Je moet zorgen dat je over de benodigde uptime beschikt in de regio waar de vm’s worden uitgevoerd.&#xA;Hiervoor kun je denken aan verschillende storage opties zoals Premium Storage die voor 1 disk een SLA biedt van 99,9%. Verder kun je werken met Availability Sets en Availability zones, hiermee verdeel je een belangrijke server over meerdere datacenters of meerdere zones in 1 regio.&#xA;Echter willen we ook de server beschermen tegen het uitvallen van een regio. Hiervoor is Azure Site Recovery (ASR) een geschikte oplossing. Hiermee repliceren we de machine asynchroon naar de andere regio of regio’s.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

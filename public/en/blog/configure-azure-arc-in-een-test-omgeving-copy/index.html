@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" href="/favicon.svg">
+
+  <title>
+  Configure Azure ARC in een test omgeving - Andy Cliftons Blog
+  </title>
+  <meta name="description" content="Test omgeving Azure Arc." />
+  <meta name="author" content="Andy Clifton" />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="stylesheet" href="/css/styles.css" />
+  
+  
+
+  <meta property="og:url" content="//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving-copy/">
+  <meta property="og:site_name" content="Andy Cliftons Blog">
+  <meta property="og:title" content="Configure Azure ARC in een test omgeving">
+  <meta property="og:description" content="Test omgeving Azure Arc.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-01-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-01-03T00:00:00+00:00">
+    <meta property="article:tag" content="ARC">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Configure Azure ARC in een test omgeving">
+  <meta name="twitter:description" content="Test omgeving Azure Arc.">
+
+  
+  <meta itemprop="name" content="Configure Azure ARC in een test omgeving">
+  <meta itemprop="description" content="Test omgeving Azure Arc.">
+  <meta itemprop="datePublished" content="2024-01-03T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-01-03T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1518">
+  <meta itemprop="keywords" content="ARC">
+
+  
+</head>
+<body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative">
+  <a href="//localhost:1313/en/" class="capitalize font-extrabold text-2xl">
+    
+    <img src="/raw.png" alt="Andy Cliftons Blog" class="h-8 max-w-full" />
+    
+  </a>
+  <button class="mobile-menu-button md:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <line x1="4" y1="8" x2="20" y2="8" />
+      <line x1="4" y1="16" x2="20" y2="16" />
+    </svg>
+  </button>
+  <ul class="mobile-menu absolute z-10 px-6 pb-6 md:p-0 top-full left-0 w-full md:w-auto md:relative hidden md:flex flex-col md:flex-row items-end md:items-center gap-4 lg:gap-6 bg-white dark:bg-gray-800">
+
+    
+    <li><a href="/en/blog">Blogs</a></li>
+    
+    <li><a href="/en/page/about/">Over Mij</a></li>
+    
+
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="open-search inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="10" cy="10" r="7" />
+          <line x1="21" y1="21" x2="15" y2="15" />
+        </svg>
+      </span>
+    </li>
+    
+
+    
+    <li class="grid place-items-center">
+      <span class="toggle-dark-mode inline-block cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="3" />
+          <line x1="12" y1="5" x2="12" y2="5.01" />
+          <line x1="17" y1="7" x2="17" y2="7.01" />
+          <line x1="19" y1="12" x2="19" y2="12.01" />
+          <line x1="17" y1="17" x2="17" y2="17.01" />
+          <line x1="12" y1="19" x2="12" y2="19.01" />
+          <line x1="7" y1="17" x2="7" y2="17.01" />
+          <line x1="5" y1="12" x2="5" y2="12.01" />
+          <line x1="7" y1="7" x2="7" y2="7.01" />
+        </svg>
+      </span>
+    </li>
+    
+  </ul>
+</header>
+<main class="flex-1">
+  
+  
+
+  
+  <div class="relative max-w-5xl mx-auto px-4">
+    <img src="/img/arc.jpeg" class="rounded-lg shadow-sm w-full object-contain" />
+    
+    <div class="absolute top-4 right-8 rounded shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-2 py-0.5">
+      January 3, 2024
+    </div>
+    
+  </div>
+  
+
+  <article class="prose lg:prose-lg mx-auto my-8 dark:prose-dark px-4">
+
+    <h1 class="text-2xl font-bold mb-2">Configure Azure ARC in een test omgeving</h1>
+    
+    <h5 class="text-sm flex items-center flex-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <line x1="16" y1="3" x2="16" y2="7" />
+        <line x1="8" y1="3" x2="8" y2="7" />
+        <line x1="4" y1="11" x2="20" y2="11" />
+        <rect x="8" y="15" width="2" height="2" />
+      </svg>
+      Posted on January 3, 2024
+      
+        &nbsp;&bull;&nbsp;
+      
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+      </svg>
+      8 minutes
+      &nbsp;&bull;
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <line x1="3" y1="6" x2="3" y2="19" />
+        <line x1="12" y1="6" x2="12" y2="19" />
+        <line x1="21" y1="6" x2="21" y2="19" />
+      </svg>
+      1518 words
+      
+        
+      
+    </h5>
+    
+
+    <details id="TableOfContents" class="px-4 mt-4 bg-gray-100 dark:bg-gray-700 rounded toc">
+    <summary class="flex items-center font-bold py-2 px-4 cursor-pointer justify-between select-none text-black dark:text-white">
+      <span>Table of contents</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <polyline points="6 9 12 15 18 9"></polyline>
+     </svg>
+    </summary>
+
+    <ul class="mt-2 pb-4">
+        
+
+        
+        <li>
+        <a href="#configure-azure-arc-in-een-test-omgeving">Configure Azure ARC in een test omgeving</a>
+        
+
+        
+        <ul>
+            <ul>
+            <li>
+        <a href="#-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress. &lt;==</a>
+        
+
+        
+        </li></ul>
+          <li>
+        <a href="#voorwoord">Voorwoord</a>
+        
+
+        
+        </li><li>
+        <a href="#bouw-een-nieuwe-server-die-geschikt-is-voor-hyper-v-portal">Bouw een nieuwe Server die geschikt is voor Hyper-V (Portal)</a>
+        
+
+        
+        </li><li>
+        <a href="#bouw-een-nieuwe-server-die-geschikt-is-voor-hyper-v-powershell">Bouw een nieuwe Server die geschikt is voor Hyper-V (Powershell)</a>
+        
+
+        
+        </li><li>
+        <a href="#installeer-hyper-v-en-installeer-windows-2019-op-een-hyper-v-machine">Installeer Hyper-V en installeer Windows 2019 op een Hyper-V machine.</a>
+        
+
+        
+        </li><li>
+        <a href="#configureer-je-vm-zodat-je-azure-arc-kunt-installeren-op-een-azure-vm">Configureer je VM zodat je Azure Arc kunt installeren op een Azure VM.</a>
+        
+
+        
+        </li><li>
+        <a href="#azure-arc-configureren">Azure Arc Configureren</a>
+        </li></ul>
+    </li></ul>
+  </details>
+
+    <h1 id="configure-azure-arc-in-een-test-omgeving">Configure Azure ARC in een test omgeving</h1>
+<h3 id="-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress. &lt;==</h3>
+<h2 id="voorwoord">Voorwoord</h2>
+<p>Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.
+Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.
+In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.</p>
+<p><ins>Wat is Azure Arc?:</ins></p>
+<p>Met Azure Arc kun je Windows- en Linux-machines beheren die buiten Azure worden gehost in Azure. Dit betekent dat je Azure-services kunt gebruiken op fysieke servers of servers die worden uitgevoerd in services van andere cloudproviders.</p>
+<p>Azure Arc is in september 2020 algemeen beschikbaar geworden.</p>
+<h2 id="bouw-een-nieuwe-server-die-geschikt-is-voor-hyper-v-portal">Bouw een nieuwe Server die geschikt is voor Hyper-V (Portal)</h2>
+<p>We gaan nu via de portal een nieuwe machine bouwen die voldoet aan de eisen om Hyper-V te mogen installeren. (heel veel machines in Azure hebben namelijk niet de juiste specs om een Hyper-V omgeving te kunnen optuigen.)</p>
+<p>Ga naar <a href="http://portal.azure.com" target="_blank" rel="noopener">http://portal.azure.com</a>
+ en log in met de credentials om een machine te kunnen bouwen.</p>
+<p>Ga naar <strong>Create a Resources.</strong>
+<img src="/Images/AzureArc/Resource.JPG" alt="alt"></p>
+<p>Zoek daarna op <strong>Windows Server</strong>, en klik daarna op <strong>Create</strong></p>
+<p><img src="/Images/AzureArc/WindowsServer.jpg" alt="Image"></p>
+<p>Kies daarna voor <strong>Windows Server 2019 Datacenter</strong> en druk op <strong>Create</strong></p>
+<p><img src="/Images/AzureArc/WindowsServer1.jpg" alt="Image"></p>
+<hr>
+<p>Vervolgens moet je de onderstaande gegevens invullen:</p>
+<pre tabindex="0"><code>Subscription = &#34;de subscription die je gebruikt om machines te installeren&#34;
+Resource Group = selecteer een bestaande Resource group of maak een nieuwe aan.
+Virtual Machine name = HV01
+Region = kies de regio die het dichtst bij je zit. In ons geval is dat West-Europe.
+Availablility Options = No Infrastructure redundancy required (kies niet hiervoor als je een live omgeving ervan gaat maken)
+Security Type = Trusted launch virtual machines
+Image = Windows Server 2019 Datacenter - x64 Gen1 (let op dit Moet **GEN1** zijn anders werkt het niet)
+Size = Dit moet een V3 versie zijn om Hyper-V te kunnen installeren. Dus de Stansdard_D8s_v3
+
+Username = Zelf in te vullen
+Password = Zelf in te vullen
+
+De rest mag default blijven
+</code></pre><p><img src="/Images/AzureArc/WindowsServer2.jpg" alt="Image"></p>
+<p>Klik op <strong>Review &amp; Create</strong></p>
+<p>Na de review kun je op <strong>Create</strong> klikken</p>
+<p><img src="/Images/AzureArc/Deploy.JPG" alt="Image"></p>
+<p>Na een tijdje is de machine klaar en gaan we connecten en inloggen op de machine.</p>
+<p>Ga naar de resource die we net hebben aangemaakt en klik op <strong>Connect</strong>.</p>
+<p><img src="/Images/AzureArc/connect.JPG" alt="Image"></p>
+<p>Mocht je een andere manier dan Native RDP hebben geconfigureerd connect dan via die manier Anders klik op <strong>select</strong> bij Native RDP en er wordt een rdp file gedownload.</p>
+<p><img src="/Images/AzureArc/RDP.jpg" alt="Image"></p>
+<p>Open de RDP file en login op de nieuwe Server met de Admin credentials die je daarstraks hebt opgegeven.</p>
+<h2 id="bouw-een-nieuwe-server-die-geschikt-is-voor-hyper-v-powershell">Bouw een nieuwe Server die geschikt is voor Hyper-V (Powershell)</h2>
+<pre tabindex="0"><code># Variables
+$resourceGroupName = &#34;YourResourceGroupName&#34;
+$vmName = &#34;YourVMName&#34;
+$location = &#34;East US&#34; # Change this to the desired Azure region
+$adminUsername = &#34;YourAdminUsername&#34;
+$adminPassword = &#34;YourAdminPassword&#34;
+$vmSize = &#34;Standard_D8s_v3&#34; (nodig voor een Gen1 machine)
+$imagePublisher = &#34;MicrosoftWindowsServer&#34;
+$imageOffer = &#34;WindowsServer&#34;
+$imageSku = &#34;2019-Datacenter&#34;
+$nicName = &#34;YourNICName&#34;
+$vnetName = &#34;YourVNetName&#34;
+$subNetName = &#34;YourSubnetName&#34;
+
+# Create a new resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+# Create a new virtual network
+$subnet = New-AzVirtualNetworkSubnetConfig -Name $subNetName -AddressPrefix &#34;10.0.1.0/24&#34;
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName -Location $location -AddressPrefix &#34;10.0.0.0/16&#34; -Subnet $subnet
+
+# Create a public IP address
+$publicIp = New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name &#34;YourPublicIP&#34; -AllocationMethod Dynamic -Location $location
+
+# Create a network security group (optional)
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName -Name &#34;YourNSG&#34; -Location $location
+
+# Allow RDP traffic (optional)
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name &#34;Allow-RDP&#34; -Description &#34;Allow RDP&#34; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix &#34;*&#34; -SourcePortRange &#34;*&#34; -DestinationAddressPrefix &#34;*&#34; -DestinationPortRange 3389
+$nsg | Add-AzNetworkSecurityRuleConfig -NetworkSecurityRule $rdpRule
+$nsg | Set-AzNetworkSecurityGroup
+
+# Create a network interface
+$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create the virtual machine configuration
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $vmSize
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential (New-Object PSCredential -ArgumentList $adminUsername, (ConvertTo-SecureString -AsPlainText -Force $adminPassword))
+
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version &#34;latest&#34;
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+# Create the VM
+New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig
+</code></pre><p>Login op je machine.</p>
+<p><img src="/Images/AzureArc/Login.JPG" alt="Image"></p>
+<h2 id="installeer-hyper-v-en-installeer-windows-2019-op-een-hyper-v-machine">Installeer Hyper-V en installeer Windows 2019 op een Hyper-V machine.</h2>
+<p>Als je bent ingelogd op de machine gaan we beginnen met de installatie van de Hyper-V Features.
+Open Server Manager en klik op <strong>Manage</strong> en daarna op <strong>Add Roles and Features</strong></p>
+<p><img src="/Images/AzureArc/HyperV1.JPG" alt="IMage"></p>
+<p>In het before you begin scherm klik je op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV2.JPG" alt="Image"></p>
+<p>Selecteer <strong>Role-Based or Feature-Based Installation</strong></p>
+<p><img src="/Images/AzureArc/HyperV3.JPG" alt="Image"></p>
+<p>Je kunt nu kiezen op welke server je de installatie wilt gaan doen. We willen dit installeren op de nieuw gebouwde server.
+Dus kunnen we klikken op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV4.JPG" alt="Image"></p>
+<p>Nu komen we op het scherm om de role te installeren. Klik op <strong>Hyper-V</strong></p>
+<p><img src="/Images/AzureArc/HyperV5.JPG" alt="Image"></p>
+<p>Daarna komt er een pop-up naar boven waarbij ook de features worden weergegeven die noodzakelijk zijn om Hyper-V te kunnen gebruiken.
+Klik dan ook op <strong>Add Features</strong></p>
+<p><img src="/Images/AzureArc/HyperV6.JPG" alt="Image"></p>
+<p>Nu is Hyper-V geselecteerd en kunnen we verder. Klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV7.JPG" alt="Image"></p>
+<p>Klik bij Features ook weer op <strong>Next</strong>
+We gaan nu door naar de configuratie van Hyper-V</p>
+<p>Je komt nu uit in het beginscherm van Hyper-V configuratie en klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV8.JPG" alt="Image"></p>
+<p>Vervolgens selecteer je een netwerkkaart die je speciaal geselecteerd hebt voor Hyper-V en klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV9.JPG" alt="Image"></p>
+<p>Hierna komen we in het tabblad migration. Mocht je meerdere Hyper-V nodes hebben dan kun je er voor kiezen om Live Migration aan te zetten.
+Voor nu is dit slechts een test en hebben we dus ook maar 1 node. We zetten hier de Migration dan ook niet aan. Dus klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV10.JPG" alt="Image"></p>
+<p>Vul de default locaties voor de VM&rsquo;s in en klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/HyperV11.JPG" alt="Image"></p>
+<p>Nu is alles geconfigureerd en kunnen we op <strong>Install</strong> Klikken.</p>
+<p><img src="/Images/AzureArc/HyperV12.JPG" alt="Image"></p>
+<pre tabindex="0"><code>Mocht je Hyper-V willen deployen via Powershell gebruik dan onderstaande regel:
+
+Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
+</code></pre><p>Bouw nu 2 Virtuele Windows Servers. Hiermee kunnen we laten zien hoe je AzureArc kunt configureren.</p>
+<h2 id="configureer-je-vm-zodat-je-azure-arc-kunt-installeren-op-een-azure-vm">Configureer je VM zodat je Azure Arc kunt installeren op een Azure VM.</h2>
+<p>Normaal gesproken installeer je natuurlijk geen Azure ARC op een Azure VM machine.
+Daarom moeten we de machine een klein beetje tweaken om te kunnen gaan spelen met AzureArc.</p>
+<p>Open hiervoor Powershell en voer de volgende gegevens in:</p>
+<pre tabindex="0"><code>[System.Environment]::SetEnvironmentVariable(&#34;MSFT_ARC_TEST&#34;,&#39;true&#39;, [System.EnvironmentVariableTarget]::Machine)
+
+Set-Service WindowsAzureGuestAgent -StartupType Disabled -Verbose
+Stop-Service WindowsAzureGuestAgent -Force -Verbose
+</code></pre><p>Mocht het nodig zijn dan kun je nog een Firewall rule aanmaken om toe te staan dat er connectie gemaakt wordt.
+New-NetFirewallRule -Name BlockAzureIMDS -DisplayName &ldquo;Block access to Azure IMDS&rdquo; -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254</p>
+<h2 id="azure-arc-configureren">Azure Arc Configureren</h2>
+<p>Je kunt Linux- en Windows-servers onboarden met behulp van het Azure Arc Center in de Azure Portal.</p>
+<p>Wanneer je je in de Azure Portal bevindt Zoek op <strong>Azure Arc</strong>.</p>
+<p><img src="/Images/AzureArc/Arc1.JPG" alt="Image"></p>
+<p>Klik dan op <strong>Infrastructure</strong> en daarna op <strong>ADD</strong> bij Servers.</p>
+<p><img src="/Images/AzureArc/Arc2.JPG" alt="Image"></p>
+<p>Nu kun je kiezen voor Single, Multiple of Update management.</p>
+<p><img src="/Images/AzureArc/Arc3.JPG" alt="Image"></p>
+<pre tabindex="0"><code>Single = 1 machine per keer installeren
+Multiple = meerdere machines installeren via een Service Principal, hiermee kun je het script geautomatiseerd laten lopen zonder tussenkomst op meerdere machines.
+Update Management = Machines die in Azure Update Management staan worden door middel van een Service principal toegevoegd aan Azure ARC
+</code></pre><p>Aangezien we het gaan gebruiken voor een test zou ik kiezen voor single als je snel de 2 machines wilt toevoegen, of mltiple als je al een service principal hebt.</p>
+<p>We kiezen nu dus voor <strong>Generate Script</strong> bij Add a single server</p>
+<p><img src="/Images/AzureArc/ArcServer1.JPG" alt="Image"></p>
+<p>Bij Prerequisites bekijk deze en klik daarna op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/ArcServer2.JPG" alt="Image"></p>
+<p>Nu gaan we de Resource details invullen</p>
+<pre tabindex="0"><code>Subscription = de bestaande Subscription
+Resource group = een resource group die je gemaakt hebt voor Azure ARC
+
+Region = Regio het dichtst in de buurt is van je locatie. 
+Operating System = Linux of Windows
+
+Connectivity method = Public or Private endpoint afhankelijk wat je geselecteerd hebt.
+</code></pre><p>Klik daarna op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/ArcServer3.JPG" alt="Image"></p>
+<p>Daarna kun je Tags aangeven voor de Servers mocht dat nodig zijn. Bijvoorbeeld voor Backup of responsible groups, locatie, enz.
+Klik daarna op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/ArcServer4.JPG" alt="Image"></p>
+<p>Daarna krijg je het script te zien. Je kunt deze kopiëren of je kunt de ps1 downloaden. Download de PS1 en kopieer die naar de Hyper-V server.</p>
+<p><img src="/Images/AzureArc/ArcServer5.JPG" alt="Image"></p>
+<p>Login op de Hyper-V server en open Powershell in Admin mode.</p>
+<p>In de folder C:\Scripts heb ik de ps1 geplaatst. Deze mag je nu runnen.
+Aan het einde komt er een pop-up naar voren om je Azure credentials in te vullen. Zorg dat je Enhanced mode voor IE uit hebt staan.</p>
+<p><img src="/Images/AzureArc/ArcServer6.JPG" alt="Image"></p>
+<p>Vul hier je emailadres in voor Azure. en klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/ArcServer7.JPG" alt="image"></p>
+<p>Vul je wachtwoord in en klik op <strong>Next</strong></p>
+<p><img src="/Images/AzureArc/ArcServer8.JPG" alt="image"></p>
+<p>Hierna geeft powershell aan dat het script succesvol is afgerond</p>
+<p><img src="/Images/AzureArc/ArcServer9.JPG" alt="Image"></p>
+<p>Als je daarna in Azure naar Azure Arc gaat en naar Servers dan zul je deze machine hier zien staan</p>
+<p><img src="/Images/AzureArc/Arc4.JPG" alt="Image"></p>
+<p>Hiermee is de installatie van Azure Arc afgerond en kun je de machines die je hebt gebruiken om Azure Policy&rsquo;s, Update management, Logic Apps of andere dingen erop los te laten.
+Later maak ik nog een blog over hoe je Update manager gebruikt op je Azure Arc machines.</p>
+
+<div class="px-2 mb-2">
+  
+  <script src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+  
+</div>
+</article><div class="bg-blue-100 dark:bg-gray-900">
+  <div class="container px-4 py-12 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+    <div>
+      <div class="text-2xl font-bold mb-2">Wil je me volgen op Linkedin, Github of Youtube?</div>
+      <p class="opacity-60"></p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+    <ul class="flex justify-center gap-x-3 flex-wrap gap-y-2">
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.linkedin.com/in/andy-clifton-4b497bb6/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <line x1="8" y1="11" x2="8" y2="16" />
+            <line x1="8" y1="8" x2="8" y2="8.01" />
+            <line x1="12" y1="16" x2="12" y2="11" />
+            <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://github.com/AndyClifton2"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+            />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a
+          href="https://www.youtube.com/@AzureAdventurer"
+          target="_blank"
+          rel="noopener"
+          aria-label="YouTube"
+          class="p-1 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-youtube"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="12" cy="12" r="9" />
+            <path d="M10 9l5 3l-5 3z" />
+          </svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+    </ul>
+  </div>
+</div>
+
+    </main><footer class="container p-6 mx-auto flex justify-between items-center">
+  <span class="text-sm font-light">
+    
+    Copyright © 2024 - Andy Clifton · All rights reserved
+    
+  </span>
+  <span onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-1 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 15l-6 -6l-6 6h12" />
+    </svg>
+  </span>
+</footer>
+
+<div class="search-ui absolute top-0 left-0 w-full h-full bg-white dark:bg-gray-800 hidden">
+  <div class="container max-w-3xl mx-auto p-12">
+    <div class="relative">
+      <div class="my-4 text-center text-2xl font-bold">Search</div>
+
+      <span class="p-2 absolute right-0 top-0 cursor-pointer close-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </span>
+    </div>
+
+    <input type="search" class="py-2 px-3 w-full dark:text-black border dark:border-transparent"
+      placeholder="Enter search query" />
+
+    <div class="search-results text-lg font-medium my-4 hidden">Results</div>
+    <ul class="search-list my-2">
+
+    </ul>
+
+    <div class="no-results text-center my-8 hidden">
+      <div class="text-xl font-semibold mb-2">No results found</div>
+      <p class="font-light text-sm">Try adjusting your search query</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="//localhost:1313/js/scripts.min.js"></script>
+
+
+
+
+
+
+
+<script>
+  
+  const darkmode = document.querySelector('.toggle-dark-mode');
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('darkmode', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('darkmode', 'dark')
+    }
+  }
+  if (darkmode) {
+    darkmode.addEventListener('click', toggleDarkMode);
+  }
+
+  const darkStorage = localStorage.getItem('darkmode');
+  const isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (!darkStorage && isBrowserDark) {
+    document.documentElement.classList.add('dark');
+  }
+
+  if (darkStorage && darkStorage === 'dark') {
+    toggleDarkMode();
+  }
+</script>
+
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button')
+  const mobileMenu = document.querySelector('.mobile-menu')
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+  if(mobileMenu && mobileMenuButton){
+    mobileMenuButton.addEventListener('click', toggleMenu)
+  }
+</script>
+</body>
+</html>

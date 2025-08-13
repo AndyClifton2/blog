@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Andy Cliftons Blog</title>
+    <link>//localhost:1313/en/blog/</link>
+    <description>Recent content in Blog on Andy Cliftons Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/en/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Default Outbound Internet Access</title>
+      <link>//localhost:1313/en/blog/default-outbound-internet-access/</link>
+      <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/default-outbound-internet-access/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Installeren en configureren van SCOM Managed Instance</title>
+      <link>//localhost:1313/en/blog/deploy-scom-mi/</link>
+      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/deploy-scom-mi/</guid>
+      <description>&lt;h1 id=&#34;verkleinen-os-disk-size-in-azure&#34;&gt;Verkleinen OS Disk Size in Azure&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;SCOM Managed Instance is een op cloud gebasseerd alternatief voor System Center Operations Manager zoals we dat nu On-Premise kennen bij klanten.&#xA;SCOM Managed Instance bied ons de kans om ons constant workloads (dus niet alleen VM&amp;rsquo;s of SQL Databases) te bewaken en waar mogelijk met geautomatiseerde oplossingen problemen op te lossen op deze workloads (denk bijvoorbeeld aan stap 1 herstarten service, stap 2 restart server , stap 3 opnieuw installeren van applicatie, en als laatste stap een error er doen uitgaan naar de beheerder via mail of alleen via de portal)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Verklein OS Disk Size in Azure</title>
+      <link>//localhost:1313/en/blog/shrink-os-disk-size-in-azure/</link>
+      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/shrink-os-disk-size-in-azure/</guid>
+      <description>&lt;h1 id=&#34;verkleinen-os-disk-size-in-azure&#34;&gt;Verkleinen OS Disk Size in Azure&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Een OS disk die te groot aangemaakt is, het blijft een lastig probleem. Het zijn onnodige kosten binnen azure. en het aanpassen van de Size van een Azure OS disk kan niet zomaar. Je krijgt dan de melding:&#xA;&lt;img src=&#34;//localhost:1313/Images/ShrinkOS/ReduceSize.png&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Toch zijn er mogelijkheden om dit aan te passen en daardoor kosten te besparen. De eis om dit te kunnen doen is uiteraard dat er genoeg schijfruimte aanwezig op de Disk in de VM om dit kunnen doen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Inplace Upgrade een Server van 2019 naar 2022</title>
+      <link>//localhost:1313/en/blog/upgrade-a-server-from-2019-to-2022/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/upgrade-a-server-from-2019-to-2022/</guid>
+      <description>&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;De vraag die ik regelmatig krijg is: Hoe kan ik een Windows Server upgraden naar de nieuwste versie van Windows nu ik geen iso kan mounten?&#xA;Microsoft heeft hier over nagedacht en heeft de mogelijkheid gecreëerd om een inplace upgrade uit te voeren op de machine zelf.&#xA;Hieronder leg ik verder uit hoe je deze stappen het beste kunt doen.&lt;/p&gt;&#xA;&lt;h3 id=&#34;creëer-een-managed-disk-met-de-iso-hierin&#34;&gt;Creëer een Managed Disk met de Iso hierin.&lt;/h3&gt;&#xA;&lt;p&gt;Het crëeren van deze disk kan alleen via Powershell.&#xA;Daarop open ISE en creëer onderstaande Powershell script:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Eenmalige toegangscode voor Azure AD B2B-Guest Users</title>
+      <link>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</guid>
+      <description>&lt;h1 id=&#34;eenmalige-toegangscode-voor-azure-ad-b2b-guest-users&#34;&gt;Eenmalige toegangscode voor Azure AD B2B-Guest Users&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;AzureAD B2B staat externe gebruikers toe om toepassingen, services en gegevens van de Tenant te gebruiken.&#xA;Om gasten toegang toe te staan moeten ze een AzureAD account, Microsoft account of een Google Federation hebben. (Voor @gmail.com en @googlemail.com gebruikers).&#xA;Mocht een user nu geen van deze accounts hebben dan kan er toch connectie gemaakt worden met een eenmalige toegangscode.&#xA;Deze code wordt naar het mailadres van de guest user gestuurd en de code blijft dan voor 30 minuten geldig.&#xA;Zodra de guest user zichzelf heeft geautentiseerd blijft de sessie 24 uur valid, daarna moet de user een nieuwe code aanvragen om opnieuw te kunnen inloggen.&#xA;Gebruikers van een eenmalige toegangscode moeten gebruik maken van onderstaande links wanneer ze zich authenticeren:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configure Azure ARC in een test omgeving</title>
+      <link>//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/configure-azure-arc-in-een-test-omgeving/</guid>
+      <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Run Powershell Script met Hybrid Worker Groups</title>
+      <link>//localhost:1313/en/blog/run-powershell-script-with-hybrid-worker/</link>
+      <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/run-powershell-script-with-hybrid-worker/</guid>
+      <description>&lt;h1 id=&#34;run-powershell-script-met-hybrid-worker-groups&#34;&gt;Run Powershell Script met Hybrid Worker Groups&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Als je de on-premises omgeving wilt automatiseren, is Azure Arc Server een geweldige aanbieding voor het onboarden van Azure-beheerservices zoals Azure Monitor, Sentinel, maar ook Defender en IAM.&#xA;Een van de andere voordelen die we nog hebben is het gebruik van Hybrid Workers. Hierdoor kun je Runbooks, Logic Apps of Power Automate gebruiken om het beheer of deploy van dingen op je on-premise vm mogelijk te maken.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Password Protection</title>
+      <link>//localhost:1313/en/blog/passwordprotection/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/passwordprotection/</guid>
+      <description>&lt;h1 id=&#34;password-protection&#34;&gt;Password Protection&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Complexe wachtwoorden zijn basis requirements om je systeem te beschermen tegen een cyberaanval.&#xA;Zelfs vandaag de dag kunnen de meeste cyber-attacks voorkomen worden als users een meer complex en vooral niet te raden wachtwoord zouden gebruiken.&#xA;Cyber-attackers proberen altijd eerst het low hanging fruit. Dus met een password protection policy kun je het ze in ieder geval al een stuk moeilijker maken.&#xA;In een On-Premises omgeving kunnen we complexe wachtwoorden afdwingen via Group Policy’s, echter kunnen we met deze methode geen wachtwoord combinaties blokken. Dit kan wel via password protection.&#xA;Azure AD support nu banned password list en smart lockout voor zowel Azure AD als ook on-premise AD in een hybrid omgeving. (Smart lockout gebruikt cloud intelligence om wachtwoord spoofing te detecteren).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Disk Encryptie in Azure VMs</title>
+      <link>//localhost:1313/en/blog/disk-encryptie-in-azure-vms/</link>
+      <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/disk-encryptie-in-azure-vms/</guid>
+      <description>&lt;h1 id=&#34;disk-encryptie-in-azure-vms&#34;&gt;Disk Encryptie in Azure VMs&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;In het verleden vereiste het proces van het encrypten van een virtuele machine in Microsoft Azure een AD App account om het werk uit te kunnen voeren.&#xA;Tegenwoordig hebben we een eenvoudigere manier om onze VM’s in Microsoft Azure te encrypten en deze nieuwe methode is geïntegreerd in de Azure Portal.&#xA;In dit artikel gaan we de basisprincipes behandelen om encryptie in te schakelen met behulp van de nieuwe methode, inclusief het maken van een Azure Key Vault.&#xA;We nemen ook de stappen door die kunnen worden uitgevoerd in de Azure Portal en de Powershell functies om het encryptieproces te ondersteunen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Disaster Recovery</title>
+      <link>//localhost:1313/en/blog/disaster-recovery/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/disaster-recovery/</guid>
+      <description>&lt;h1 id=&#34;disaster-recovery&#34;&gt;Disaster Recovery&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Als je een virtuele machine hebt draaien in Azure en je wilt er voor zorgen dat je machines zoveel mogelijk beschermd zijn tegen downtime, dan zijn er meerdere dingen die je wilt bekijken in de termen van availability.&#xA;Je moet zorgen dat je over de benodigde uptime beschikt in de regio waar de vm’s worden uitgevoerd.&#xA;Hiervoor kun je denken aan verschillende storage opties zoals Premium Storage die voor 1 disk een SLA biedt van 99,9%. Verder kun je werken met Availability Sets en Availability zones, hiermee verdeel je een belangrijke server over meerdere datacenters of meerdere zones in 1 regio.&#xA;Echter willen we ook de server beschermen tegen het uitvallen van een regio. Hiervoor is Azure Site Recovery (ASR) een geschikte oplossing. Hiermee repliceren we de machine asynchroon naar de andere regio of regio’s.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
