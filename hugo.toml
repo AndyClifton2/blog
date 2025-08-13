@@ -12,7 +12,7 @@ DefaultContentLanguageInSubdir = true
     languageName = "English"
     [languages.en.params]
       introTitle = "Hey! Ik ben Andy Clifton"
-      introSubtitle = "Ik ben 42 jaar oud en Cloud Engineer bij RawWorks, Microsoft Certified Trainer en ik schrijf deze blogs. Ook maak ik de podcast Azure Adventurer."
+      introSubtitle = "Ik ben 42 jaar oud en Cloud Engineer en Tribe Lead bij RawWorks, Microsoft Certified Trainer en ik schrijf deze blogs. Ook maak ik de podcast Azure Adventurer."
       introPhoto = "/img/Ik.jpg"
       logo = "/raw.png"
     [[languages.en.menu.main]]
