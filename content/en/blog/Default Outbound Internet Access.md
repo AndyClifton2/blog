@@ -149,3 +149,207 @@ Je betaalt alleen voor het Public IP-adres, niet voor extra netwerkcomponenten.
 Voor test- of ontwikkelomgevingen kan dit een snelle en goedkope oplossing zijn.
 
 Let op: deze optie is minder veilig en minder schaalbaar dan NAT Gateway, Load Balancer of Firewall. Gebruik dit alleen als security geen grote rol speelt.
+
+## Hoe kunen we checken welke machines afhankelijk zijn van Outbound access
+
+Het is belangrijk om te weten welke virtuele machines in je omgeving afhankelijk zijn van outbound internettoegang, zodat je tijdig maatregelen kunt nemen. Wij gebruiken hiervoor Powershell. Met PowerShell kun je bijvoorbeeld opvragen welke VM’s een public IP-adres hebben. Door deze informatie te verzamelen, kun je gericht bepalen welke workloads extra aandacht nodig hebben bij het uitfaseren van default outbound access.  
+Voer onderstaande Powershell script uit om een output te krijgen van de servers die je moet aanpassen.
+
+````
+# Login to Azure
+Connect-AzAccount
+
+# Select subscription
+$subscriptionId = "<your-subscription-id>"
+Select-AzSubscription -SubscriptionId $subscriptionId
+
+# Resultaat array
+$results = @()
+
+# Get all VMs
+$vms = Get-AzVM
+
+foreach ($vm in $vms) {
+    $vmName = $vm.Name
+    $rgName = $vm.ResourceGroupName
+    $hasPublicIp = $false
+    $hasOutboundNSG = $false
+    $hasInternetRoute = $false
+
+    # Get NIC
+    $nicId = $vm.NetworkProfile.NetworkInterfaces[0].Id
+    $nicName = ($nicId -split "/")[-1]
+    $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName
+
+    # Check for public IP
+    foreach ($ipConfig in $nic.IpConfigurations) {
+        if ($ipConfig.PublicIpAddress) {
+            $hasPublicIp = $true
+            $publicIpName = ($ipConfig.PublicIpAddress.Id -split "/")[-1]
+            $publicIpRg = ($ipConfig.PublicIpAddress.Id -split "/")[4]
+            $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $publicIpRg
+        }
+    }
+
+
+    # Check NSG outbound rules
+    if ($nic.NetworkSecurityGroup) {
+        $nsgName = ($nic.NetworkSecurityGroup.Id -split "/")[-1]
+        $nsgRg = ($nic.NetworkSecurityGroup.Id -split "/")[4]
+        $nsg = Get-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $nsgRg
+        $outboundRules = $nsg.SecurityRules | Where-Object { $_.Direction -eq "Outbound" -and $_.Access -eq "Allow" }
+        if ($outboundRules.Count -gt 0) {
+            $hasOutboundNSG = $true
+        }
+    }
+
+
+    # Check route table
+    $subnetId = $nic.IpConfigurations[0].Subnet.Id
+    $vnetRg = ($subnetId -split "/")[4]
+    $vnetName = ($subnetId -split "/")[8]
+    $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRg
+    $subnetName = ($subnetId -split "/")[-1]
+    $subnet = $vnet.Subnets | Where-Object { $_.Name -eq $subnetName }
+
+    if ($subnet.RouteTable) {
+        $routeTable = Get-AzRouteTable -ResourceId $subnet.RouteTable.Id
+        $internetRoute = $routeTable.Routes | Where-Object { $_.AddressPrefix -eq "0.0.0.0/0" -and $_.NextHopType -eq "Internet" }
+        if ($internetRoute) {
+            $hasInternetRoute = $true
+        }
+    }
+
+    # Output to console
+    Write-Host "VM: $vmName"
+    Write-Host "  ✅ Public IP: $hasPublicIp"
+    Write-Host "  🔄 NSG Outbound Access: $hasOutboundNSG"
+    Write-Host "  🌐 Internet Route: $hasInternetRoute"
+    Write-Host "---------------------------------------------"
+
+    # Add to results
+    $results += [PSCustomObject]@{
+        VMName           = $vmName
+        ResourceGroup    = $rgName
+        PublicIP         = $hasPublicIp
+        NSGOutboundAllow = $hasOutboundNSG
+        InternetRoute    = $hasInternetRoute
+    }
+}
+
+# Export to CSV
+$results | Export-Csv -Path "OutboundAccessReport.csv" -NoTypeInformation
+Write-Host "✅ Rapport opgeslagen als 'OutboundAccessReport.csv'"
+
+````
+
+We hebben nu onderzocht welke machines een Public IP hebben,NSG Rules hebben of een Internet Route.
+Nu moeten we de gekozen optie implementeren. Het aanmaken van een Azure Firewall zullen we later nog eens bespreken,
+Public IP toevoegen spreekt voor zich, dus we gaan nu het aanmaken van een Azure NAT Gateway aanmaken.
+
+## Aanmaken van een Azure NAT Gateway.
+![Image](/Images/Outbound/Nat.png)
+
+Azure NAT Gateway is de aanbevolen oplossing om veilige en schaalbare outbound internettoegang te bieden voor je virtuele machines en andere resources in Azure. Met NAT Gateway kun je outbound verkeer centraliseren en beheren, zodat je precies weet welke IP-adressen worden gebruikt voor internettoegang. Dit maakt het eenvoudiger om firewallregels toe te passen, monitoring in te richten en je netwerkarchitectuur te beveiligen. Daarnaast zorgt NAT Gateway voor hoge beschikbaarheid en ondersteunt het duizenden gelijktijdige verbindingen, waardoor het geschikt is voor zowel kleine als grote omgevingen. Hieronder lees je hoe je een NAT Gateway aanmaakt en configureert.
+Maar hoe configureer je dit nu:
+
+Log in op de Azure portal en klik op **Create a resource**.
+
+![Image](/Images/Outbound/NatGateway.png)
+
+Vul in **NAT Gateway** en klik op **Create**.
+
+Vul in en klik op **Next**
+~~~
+Subscription = Subscription waar connectivity aan verbonden is
+Resource Group = RG voor Connectivity
+
+NAT Gateway Name = Naam
+Region = Regio waar jullie alles op deployen. (West Europe in dit geval)
+Availability Zone = Geef aan of je dit wilt gebruiken in geval van issues in het datacenter
+TCP Ide timeout = Tijd tussen 4 en 120 minuten voordat er een timeout optreed en de connectie word gesloten.
+~~~
+
+![Image](/Images/Outbound/NatGateway1.png)
+
+
+Nu moeten we de outbound adressen gaan configureren.
+
+Klik eerst op **Create a new public IP address**
+
+~~~
+Name = naam voor de publieke IP.
+SKU = Basic
+Assignment = Static
+~~~
+
+Klik op **Ok**
+
+![Image](/Images/Outbound/pip.png)
+Vervolgens configureren we de Prefix. (dus hoeveel Public IP's kunnen er maximaal in deze NAT Gateway nog aangemaakt worden.)
+
+Klik  op **Create a new public IP prefix**
+
+~~~
+Name = naam voor de publieke prefix.
+Prefix Size= Pak de grootte die je nodig hebt. In deze test pak ik een /31 omdat ik niet meer als 2 externe adressen nodig heb.
+~~~
+Klik op **Ok**
+
+![Image](/Images/Outbound/pip2.png)
+
+klik op **Next**
+
+We zijn nu aangekomen bij het configureren van de subnets die deze NAT gaan gebruiken.
+Dus selecteer het Virtual network en daarna de subnets.
+
+![Image](/Images/Outbound/NAT1.png)
+
+klik op **Review+Create** en daarna op **Create**
+
+![Image](/Images/Outbound/passed.png)
+
+We kunnen dit ook opbouwen via Powershell dat doe je via onderstaande Powershell script.
+
+````
+# Set the variables for the NAT Gateway.
+$rg = "RG-Andy-Test2"
+$Location = "Westeurope"
+$sku = "Standard"
+$PublicIpname = "pip"
+$Publicprefixname = "PIPPrefix"
+$NatGatewayname="NATGateway"
+
+
+#create Rsource group
+New-AzResourceGroup -Name $rg -Location $Location 
+
+#create Standard SKUP public IP
+$publicIP = New-AzPublicIpAddress -Name $PublicIpname -ResourceGroupName $rg -AllocationMethod Static -Location $Location -Sku $sku
+
+#create  IP prefix
+$publicIPPrefix = New-AzPublicIpPrefix -Name $Publicprefixname -ResourceGroupName $rg -Location $Location -PrefixLength 29
+
+#Create NAT gateway
+$natGateway = New-AzNatGateway -Name $NatGatewayname -ResourceGroupName $rg -PublicIpAddress $publicIP -PublicIpPrefix $publicIPPrefix -Location $Location -Sku $sku -IdleTimeoutInMinutes 4
+$natGateway  | Select-Object Name, ResourceGroupName, IdleTimeoutInMinutes , SKuText | Format-table -autosize –wrap
+
+$virtualNetwork = Get-AzVirtualNetwork | Out-GridView -PassThru -Title "Kies je VNET"
+$NATSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetwork | Out-GridView -PassThru -Title "Kies de Subnets"
+
+````
+
+Nu is de NAT Gateway gedeployed en geconfigureerd het enige wat nu nog moet gebeuren, is inloggen op de VM en testen of outbound verkeer werkt.
+
+## Wil je nu al zorgen voor een uniforme aanpak? Pak dan meteen de standaard internettoegang in bestaande VNets aan.
+
+Dat doe je zo:
+
+🔒 *Blokkeer ongewenst internetverkeer*
+Maak een outbound NSG-regel die al het verkeer naar het internet tegenhoudt — behalve via jouw gekozen route.
+
+🚧 *Stuur het verkeer bewust de juiste kant op*
+Koppel expliciet een NAT Gateway of Firewall aan je VNet en zorg dat andere routes verdwijnen uit het plaatje.
+
+Zo houd je de touwtjes stevig in handen en voorkom je dat verkeer stiekem via de achterdeur naar buiten glipt.
+

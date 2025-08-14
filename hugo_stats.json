@@ -210,6 +210,7 @@
       "-disclaimer-work-in-progress-",
       "TableOfContents",
       "a",
+      "aanmaken-van-een-azure-nat-gateway",
       "azure-arc-configureren",
       "azure-site-recovery-via-powershell",
       "bouw-een-nieuwe-server-die-geschikt-is-voor-hyper-v-portal",
@@ -230,6 +231,7 @@
       "enable-eenmalige-toegangscode-feature",
       "encrypt-een-vm-via-de-azure-portal",
       "failover-azure-vm-naar-een-andere-regio",
+      "hoe-kunen-we-checken-welke-machines-afhankelijk-zijn-van-outbound-access",
       "inrichten-van-de-key-vault",
       "installeer-hyper-v-en-installeer-windows-2019-op-een-hyper-v-machine",
       "installeren-azure-agents-op-on-premise-servers",
@@ -243,7 +245,8 @@
       "setup-disaster-recovery-voor-azure-vms",
       "verkleinen-os-disk-size-in-azure",
       "voorwoord",
-      "welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen"
+      "welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen",
+      "wil-je-nu-al-zorgen-voor-een-uniforme-aanpak-pak-dan-meteen-de-standaard-internettoegang-in-bestaande-vnets-aan"
     ]
   }
 }
