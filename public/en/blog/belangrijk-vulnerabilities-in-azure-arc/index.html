@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="478">
+  <meta itemprop="wordCount" content="826">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -138,7 +138,7 @@
         <circle cx="12" cy="12" r="9" />
         <polyline points="12 7 12 12 15 15" />
       </svg>
-      3 minutes
+      4 minutes
       &nbsp;&bull;
       <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      478 words
+      826 words
       
         
       
@@ -191,6 +191,36 @@
         
         </li><li>
         <a href="#aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></a>
+        
+
+        
+        </li><li>
+        <a href="#impactanalyse">Impactanalyse</a>
+        
+
+        
+        </li><li>
+        <a href="#affected-scope">Affected scope</a>
+        
+
+        
+        </li><li>
+        <a href="#oplossingen">Oplossingen</a>
+        
+
+        
+        </li><li>
+        <a href="#tot-slot">Tot slot</a>
+        
+
+        
+        </li><li>
+        <a href="#azure-arc-is-functioneel-krachtig-maar-verschuift-ook-identity-en-trust-naar-de-edge">Azure Arc is functioneel krachtig, maar verschuift ook identity en trust naar de edge.</a>
+        
+
+        
+        </li><li>
+        <a href="#dat-vereist-een-ander-beveiligingsmodel-dan-traditionele-onprem-tooling">Dat vereist een ander beveiligingsmodel dan traditionele on‑prem tooling.</a>
         </li></ul>
   </details>
 
@@ -204,10 +234,12 @@ Deze blog is bewust technisch ingestoken om inzicht te geven in waar de trust bo
 <h2 id="waarom-azure-arc-hier-kwetsbaar-is"><ins>waarom Azure Arc hier kwetsbaar is:</ins></h2>
 <p>Azure Arc‑enabled servers vertrouwen op een agent‑based trustmodel:
 Belangrijke componenten (Windows)</p>
-<p>-azcmagent – agent voor Azure Arc
--HIMDS (Hybrid Instance Metadata Service) – lokale metadata endpoint
--Guest Configuration service
--Arc Proxy service</p>
+<ul>
+<li>azcmagent – agent voor Azure Arc</li>
+<li>HIMDS (Hybrid Instance Metadata Service) – lokale metadata endpoint</li>
+<li>Guest Configuration service</li>
+<li>Arc Proxy service</li>
+</ul>
 <p>Deze services draaien lokaal met verhoogde privileges en zijn verantwoordelijk voor:</p>
 <ul>
 <li>Authenticatie richting Azure</li>
@@ -220,42 +252,104 @@ Belangrijke componenten (Windows)</p>
 <p>Microsoft classificeert CVE‑2026‑26117 als:</p>
 <p>Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]</p>
 <p>Concreet betekent dit dat:</p>
-<p>-interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
--authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
--responses van interne services gemanipuleerd kunnen worden</p>
+<ul>
+<li>Interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken</li>
+<li>Authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden</li>
+<li>Responses van interne services gemanipuleerd kunnen worden</li>
+</ul>
 <p>Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.</p>
 <h2 id="aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></h2>
 <p><ins> Stap 1 – Initiële toegang (Local, Low Privilege) </ins>
 De aanvaller heeft:</p>
-<p>-een lokale Windows‑account
--geen admin‑rechten nodig</p>
+<ul>
+<li>Een lokale Windows‑account</li>
+<li>Geen admin‑rechten nodig</li>
+</ul>
 <p>Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.</p>
 <p><img src="/Images/vulnability/AzureArc7.png" alt="alt"></p>
 <p><ins>Stap 2 – Interceptie van Arc‑service communicatie </ins>
 De aanvaller:</p>
-<p>-onderschept of imiteert communicatie tussen Arc‑services
--misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy</p>
+<ul>
+<li>Onderschept of imiteert communicatie tussen Arc‑services</li>
+<li>Misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy</li>
+</ul>
 <p>Resultaat:
 De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.</p>
 <p><img src="/Images/vulnability/AzureArc8.png" alt="alt">
 <img src="/Images/vulnability/AzureArc9.png" alt="alt"></p>
 <p><ins>Stap 3 – Local Privilege Escalation </ins>
 Door misbruik van service‑interactie:</p>
-<p>worden acties uitgevoerd in de context van SYSTEM
-verkrijgt de aanvaller volledige controle over het OS</p>
-<p>Dit maakt laterale beweging en persistence triviaal.
+<ul>
+<li>Worden acties uitgevoerd in de context van SYSTEM</li>
+<li>Verkrijgt de aanvaller volledige controle over het OS</li>
+</ul>
+<p>Daardoor wordt het heel makkelijk voor een aanvaller om zich door het netwerk te verplaatsen en toegang te behouden
+.
 <img src="/Images/vulnability/AzureArc11.png" alt="alt"></p>
 <p><ins>Stap 4 – Cloud Identity Impersonation </ins>
 Na SYSTEM‑toegang:</p>
-<p>kan de aanvaller tokens verkrijgen voor de Azure Arc machine‑identiteit
-deze identiteit kan Azure RBAC‑rechten hebben</p>
+<ul>
+<li>Kan de aanvaller tokens verkrijgen voor de Azure Arc machine‑identiteit</li>
+<li>Deze identiteit kan Azure RBAC‑rechten hebben</li>
+</ul>
 <p>Voorbeelden van misbruik:</p>
-<p>aanpassen van Azure resource properties
-uitvoeren van Arc extensions
-uitlezen of wijzigen van configuraties
-interactie met andere Azure resources binnen RBAC‑scope</p>
+<ul>
+<li>Aanpassen van Azure resource properties</li>
+<li>Uitvoeren van Arc extensions</li>
+<li>Uitlezen of wijzigen van configuraties</li>
+<li>Interactie met andere Azure resources binnen RBAC‑scope</li>
+</ul>
 <p><img src="/Images/vulnability/AzureArc13.png" alt="alt">
 <img src="/Images/vulnability/AzureArc14.png" alt="alt"></p>
+<p>Stap 5 – Tenant Hijack (worst‑case)
+Cymulate toont aan dat het mogelijk is om:</p>
+<ul>
+<li>De machine opnieuw te laten onboarden</li>
+<li>Richting een aanvaller‑gecontroleerde tenant</li>
+</ul>
+<p>Hiermee verliest de oorspronkelijke tenant volledig zicht en controle op de machine. [cymulate.com]</p>
+<h2 id="impactanalyse">Impactanalyse</h2>
+<p>Dit is géén klassieke “local only” kwetsbaarheid, maar een hybride privilege‑escalatie</p>
+<h2 id="affected-scope">Affected scope</h2>
+<p>Kwetsbaar zijn:</p>
+<ul>
+<li>Alle Azure Arc‑enabled Windows machines</li>
+<li>Met Azure Arc Agent &lt; 1.61</li>
+<li>Ongeacht hostinglocatie (on‑prem, AWS, GCP, edge)</li>
+</ul>
+<h2 id="oplossingen">Oplossingen</h2>
+<p><ins> 1. Patchniveau afdwingen </ins></p>
+<p>Microsoft heeft het probleem opgelost in:
+Azure Arc Agent Services version 1.61</p>
+<p>Updaten en agent services herstarten is vereist (Dit kan gedaan worden via Update Manager of lokaal via Windows Update)</p>
+<p><ins> 2. Azure RBAC minimaliseren </ins></p>
+<p>Controleer:</p>
+<p>welke Arc‑machine‑identiteiten rechten hebben
+verwijder Contributor‑achtige rollen waar mogelijk
+gebruik custom roles met minimale permissions
+90% van de rechten die uitgedeeld worden zijn overbodig. Met een EPM achtige oplossing kun je goed controleren welke rechten accounts of Identity&rsquo;s ook echt nodig hebben.</p>
+<p><ins> 3. Beschouw Arc als Tier‑0 component </ins></p>
+<p>Behandel Arc‑agents vergelijkbaar met:</p>
+<ul>
+<li>domain controllers</li>
+<li>identity brokers</li>
+<li>management jump hosts</li>
+</ul>
+<p>Lokale compromise = cloud impact.
+Zet dus ook zoveel mogelijk rechten en mogelijkheden achter PIM rollen.</p>
+<p><ins> 4. Logging &amp; detectie </ins></p>
+<p>Let op:</p>
+<p>herregistratie‑events van Arc machines
+token usage van machine identities
+ongebruikelijke ARM API calls vanuit Arc‑identiteiten</p>
+<p>Dit zijn allemaal dingen die je wilt opvangen in een Application Log en wil laten terugkomen in Azure Monitor of Sentinel.</p>
+<h2 id="tot-slot">Tot slot</h2>
+<p>Wat deze kwetsbaarheid vooral blootlegt, is een verschuiving in architectuur denken. Waar vroeger identiteit en autorisatie primair in het datacenter of in Azure zelf lagen, verschuift die verantwoordelijkheid steeds vaker naar agents aan de rand van het netwerk.
+Azure Arc is daarin geen uitzondering, maar een voorbode.
+Wie Azure Arc gebruikt, doet er goed aan om niet alleen te vragen “wat kan ik ermee beheren?”, maar vooral “welke vertrouwenspositie geef ik deze agent?”.</p>
+<p>CVE‑2026‑26117 laat zien dat dat geen theoretische vraag meer is.</p>
+<h2 id="azure-arc-is-functioneel-krachtig-maar-verschuift-ook-identity-en-trust-naar-de-edge">Azure Arc is functioneel krachtig, maar verschuift ook identity en trust naar de edge.</h2>
+<h2 id="dat-vereist-een-ander-beveiligingsmodel-dan-traditionele-onprem-tooling">Dat vereist een ander beveiligingsmodel dan traditionele on‑prem tooling.</h2>
 
 <div class="px-2 mb-2">
   
