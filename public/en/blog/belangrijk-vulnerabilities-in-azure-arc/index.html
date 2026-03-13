@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="348">
+  <meta itemprop="wordCount" content="380">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      348 words
+      380 words
       
         
       
@@ -223,8 +223,13 @@ authenticatie tussen componenten kan worden omzeild via alternatieve communicati
 responses van interne services gemanipuleerd kunnen worden</p>
 <p>Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.</p>
 <h2 id="aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></h2>
-<p>De aanvaller begint met een normale gebruiker in de ARC-gekoppelde machine.
-<img src="/Images/vulnability/AzureArc7.png" alt="alt"></p>
+<p>Stap 1 – Initiële toegang (Local, Low Privilege)
+De aanvaller heeft:</p>
+<p>een lokale Windows‑account
+geen admin‑rechten nodig</p>
+<p>Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.</p>
+<p><img src="/Images/vulnability/AzureArc7.png" alt="alt"></p>
+<p>Voorafgaand aan exploitatie stelt de aanvaller een ARC-gekoppeld apparaat op in zijn eigen door aanvaller gecontroleerde tenant</p>
 
 <div class="px-2 mb-2">
   

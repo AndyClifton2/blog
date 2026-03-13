@@ -63,7 +63,16 @@ Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als ee
 
 ## <ins> Aanvalsketen (technisch) </ins>
 
-De aanvaller begint met een normale gebruiker in de ARC-gekoppelde machine.
+Stap 1 – Initiële toegang (Local, Low Privilege)
+De aanvaller heeft:
+
+een lokale Windows‑account
+geen admin‑rechten nodig
+
+Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.
+
 ![alt](/Images/vulnability/AzureArc7.png)
 
+
+Voorafgaand aan exploitatie stelt de aanvaller een ARC-gekoppeld apparaat op in zijn eigen door aanvaller gecontroleerde tenant
 
