@@ -84,3 +84,14 @@ Resultaat:
 De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.
 
 ![alt](/Images/vulnability/AzureArc8.png)
+![alt](/Images/vulnability/AzureArc9.png)
+
+<ins>Stap 3 – Local Privilege Escalation </ins>
+Door misbruik van service‑interactie:
+
+worden acties uitgevoerd in de context van SYSTEM
+verkrijgt de aanvaller volledige controle over het OS
+
+Dit maakt laterale beweging en persistence triviaal.
+![alt](/Images/vulnability/AzureArc11.png)
+
