@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/page/</link>
+    <link>/en/page/</link>
     <description>Recent content in Pages on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>//localhost:1313/en/page/about/</link>
+      <link>/en/page/about/</link>
       <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/page/about/</guid>
+      <guid>/en/page/about/</guid>
       <description>&lt;p&gt;Hey!,&lt;/p&gt;&#xA;&lt;p&gt;Ik ben Andy Clifton&#xA;Ik ben 42 jaar oud en Cloud Engineer bij RawWorks, Microsoft Certified Trainer en ik schrijf deze blogs.&#xA;Ook maak ik de podcast Azure Adventurer.&lt;/p&gt;</description>
     </item>
   </channel>
