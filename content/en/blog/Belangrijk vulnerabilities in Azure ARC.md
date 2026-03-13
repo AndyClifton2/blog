@@ -1,10 +1,10 @@
 ---
 Author: "Andy Clifton"
-title: "Configure Azure ARC in een test omgeving"
+title: "Belangrijke vulnerabilities Azure Arc"
 description: "Test omgeving Azure Arc."
 date: 2024-01-03
 tags: ["ARC"]
-thumbnail: "/img/arc.jpeg"
+thumbnail: "/img/download.jpeg"
 ---
 
 
