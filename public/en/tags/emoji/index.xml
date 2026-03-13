@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emoji on Andy Cliftons Blog</title>
-    <link>//localhost:1313/en/tags/emoji/</link>
+    <link>/en/tags/emoji/</link>
     <description>Recent content in Emoji on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 07 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/en/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installeren en configureren van SCOM Managed Instance</title>
-      <link>//localhost:1313/en/blog/deploy-scom-mi/</link>
+      <link>/en/blog/deploy-scom-mi/</link>
       <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/deploy-scom-mi/</guid>
+      <guid>/en/blog/deploy-scom-mi/</guid>
       <description>&lt;h1 id=&#34;verkleinen-os-disk-size-in-azure&#34;&gt;Verkleinen OS Disk Size in Azure&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;SCOM Managed Instance is een op cloud gebasseerd alternatief voor System Center Operations Manager zoals we dat nu On-Premise kennen bij klanten.&#xA;SCOM Managed Instance bied ons de kans om ons constant workloads (dus niet alleen VM&amp;rsquo;s of SQL Databases) te bewaken en waar mogelijk met geautomatiseerde oplossingen problemen op te lossen op deze workloads (denk bijvoorbeeld aan stap 1 herstarten service, stap 2 restart server , stap 3 opnieuw installeren van applicatie, en als laatste stap een error er doen uitgaan naar de beheerder via mail of alleen via de portal)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Verklein OS Disk Size in Azure</title>
-      <link>//localhost:1313/en/blog/shrink-os-disk-size-in-azure/</link>
+      <link>/en/blog/shrink-os-disk-size-in-azure/</link>
       <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/shrink-os-disk-size-in-azure/</guid>
-      <description>&lt;h1 id=&#34;verkleinen-os-disk-size-in-azure&#34;&gt;Verkleinen OS Disk Size in Azure&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Een OS disk die te groot aangemaakt is, het blijft een lastig probleem. Het zijn onnodige kosten binnen azure. en het aanpassen van de Size van een Azure OS disk kan niet zomaar. Je krijgt dan de melding:&#xA;&lt;img src=&#34;//localhost:1313/Images/ShrinkOS/ReduceSize.png&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Toch zijn er mogelijkheden om dit aan te passen en daardoor kosten te besparen. De eis om dit te kunnen doen is uiteraard dat er genoeg schijfruimte aanwezig op de Disk in de VM om dit kunnen doen.&lt;/p&gt;</description>
+      <guid>/en/blog/shrink-os-disk-size-in-azure/</guid>
+      <description>&lt;h1 id=&#34;verkleinen-os-disk-size-in-azure&#34;&gt;Verkleinen OS Disk Size in Azure&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Een OS disk die te groot aangemaakt is, het blijft een lastig probleem. Het zijn onnodige kosten binnen azure. en het aanpassen van de Size van een Azure OS disk kan niet zomaar. Je krijgt dan de melding:&#xA;&lt;img src=&#34;/Images/ShrinkOS/ReduceSize.png&#34; alt=&#34;Image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Toch zijn er mogelijkheden om dit aan te passen en daardoor kosten te besparen. De eis om dit te kunnen doen is uiteraard dat er genoeg schijfruimte aanwezig op de Disk in de VM om dit kunnen doen.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Run Powershell Script met Hybrid Worker Groups</title>
-      <link>//localhost:1313/en/blog/run-powershell-script-with-hybrid-worker/</link>
+      <link>/en/blog/run-powershell-script-with-hybrid-worker/</link>
       <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/run-powershell-script-with-hybrid-worker/</guid>
+      <guid>/en/blog/run-powershell-script-with-hybrid-worker/</guid>
       <description>&lt;h1 id=&#34;run-powershell-script-met-hybrid-worker-groups&#34;&gt;Run Powershell Script met Hybrid Worker Groups&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Als je de on-premises omgeving wilt automatiseren, is Azure Arc Server een geweldige aanbieding voor het onboarden van Azure-beheerservices zoals Azure Monitor, Sentinel, maar ook Defender en IAM.&#xA;Een van de andere voordelen die we nog hebben is het gebruik van Hybrid Workers. Hierdoor kun je Runbooks, Logic Apps of Power Automate gebruiken om het beheer of deploy van dingen op je on-premise vm mogelijk te maken.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Password Protection</title>
-      <link>//localhost:1313/en/blog/passwordprotection/</link>
+      <link>/en/blog/passwordprotection/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/passwordprotection/</guid>
+      <guid>/en/blog/passwordprotection/</guid>
       <description>&lt;h1 id=&#34;password-protection&#34;&gt;Password Protection&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Complexe wachtwoorden zijn basis requirements om je systeem te beschermen tegen een cyberaanval.&#xA;Zelfs vandaag de dag kunnen de meeste cyber-attacks voorkomen worden als users een meer complex en vooral niet te raden wachtwoord zouden gebruiken.&#xA;Cyber-attackers proberen altijd eerst het low hanging fruit. Dus met een password protection policy kun je het ze in ieder geval al een stuk moeilijker maken.&#xA;In een On-Premises omgeving kunnen we complexe wachtwoorden afdwingen via Group Policy’s, echter kunnen we met deze methode geen wachtwoord combinaties blokken. Dit kan wel via password protection.&#xA;Azure AD support nu banned password list en smart lockout voor zowel Azure AD als ook on-premise AD in een hybrid omgeving. (Smart lockout gebruikt cloud intelligence om wachtwoord spoofing te detecteren).&lt;/p&gt;</description>
     </item>
   </channel>
