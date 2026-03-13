@@ -63,7 +63,7 @@ Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als ee
 
 ## <ins> Aanvalsketen (technisch) </ins>
 
-Stap 1 – Initiële toegang (Local, Low Privilege)
+<ins> Stap 1 – Initiële toegang (Local, Low Privilege) </ins>
 De aanvaller heeft:
 
 een lokale Windows‑account
