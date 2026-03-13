@@ -47,6 +47,8 @@ Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl 
 
 
 <ins>Technische oorzaak (CWE‑288)</ins>
+
+
 Microsoft classificeert CVE‑2026‑26117 als:
 
 Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]
