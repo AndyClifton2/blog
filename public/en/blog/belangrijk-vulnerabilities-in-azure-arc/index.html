@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1518">
+  <meta itemprop="wordCount" content="1604">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -107,7 +107,7 @@
 
   
   <div class="relative max-w-5xl mx-auto px-4">
-    <img src="/img/designer.png" class="rounded-lg shadow-sm w-full object-contain" />
+    <img src="/img/Designer.png" class="rounded-lg shadow-sm w-full object-contain" />
     
     <div class="absolute top-4 right-8 rounded shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-2 py-0.5">
       March 13, 2026
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      1518 words
+      1604 words
       
         
       
@@ -164,18 +164,11 @@
      </svg>
     </summary>
 
-    <ul class="mt-2 pb-4">
+    <ul class="mt-2 pb-4"><ul>
         
 
         
         <li>
-        <a href="#configure-azure-arc-in-een-test-omgeving">Configure Azure ARC in een test omgeving</a>
-        
-
-        
-        <ul>
-            <ul>
-            <li>
         <a href="#-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress. &lt;==</a>
         
 
@@ -209,15 +202,15 @@
         </li><li>
         <a href="#azure-arc-configureren">Azure Arc Configureren</a>
         </li></ul>
-    </li></ul>
   </details>
 
-    <h1 id="configure-azure-arc-in-een-test-omgeving">Configure Azure ARC in een test omgeving</h1>
-<h3 id="-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress. &lt;==</h3>
+    <h3 id="-disclaimer-work-in-progress-">==&gt; Disclaimer work in progress. &lt;==</h3>
 <h2 id="voorwoord">Voorwoord</h2>
-<p>Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.
-Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.
-In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.</p>
+<p>Azure Arc wordt door veel organisaties gezien als een logische en relatief “veilige” uitbreiding van Azure‑beheer naar on‑premises en multi‑cloud omgevingen. Het voelt als beheer, niet als identity‑infrastructuur. Precies dát beeld maakt kwetsbaarheden in Azure Arc extra interessant – en gevaarlijk.</p>
+<p>De afgelopen jaren zien we een duidelijke trend: steeds meer cloudfunctionaliteit wordt verplaatst naar agents die lokaal draaien, maar namens de cloud handelen. Azure Arc is daar een schoolvoorbeeld van.</p>
+<p>De Arc agent is geen passieve monitor, maar een actief onderdeel van de Azure control plane, met toegang tot identiteiten, configuraties en beheertaken.
+In dit artikel kijken we naar CVE‑2026‑26117, een kwetsbaarheid in de Azure Arc agent voor Windows die op het eerste gezicht “slechts” een lokale privilege escalation lijkt. Het onderzoek van Cymulate laat echter zien dat de impact veel verder reikt: van lokale escalatie naar cloud identity takeover.
+Dit blog is bewust technisch ingestoken. Niet om een exploit te beschrijven, maar om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.</p>
 <p><ins>Wat is Azure Arc?:</ins></p>
 <p>Met Azure Arc kun je Windows- en Linux-machines beheren die buiten Azure worden gehost in Azure. Dit betekent dat je Azure-services kunt gebruiken op fysieke servers of servers die worden uitgevoerd in services van andere cloudproviders.</p>
 <p>Azure Arc is in september 2020 algemeen beschikbaar geworden.</p>

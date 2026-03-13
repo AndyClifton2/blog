@@ -4,22 +4,25 @@ title: "Belangrijke vulnerabilities Azure Arc"
 description: "Test omgeving Azure Arc."
 date: 2026-03-13
 tags: ["ARC"]
-thumbnail: "/img/designer.png"
+thumbnail: "/img/Designer.png"
 ---
 
 
 
 
- 
-# Configure Azure ARC in een test omgeving
 
 ### ==> Disclaimer work in progress. <==
 
 ## Voorwoord
 
-Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.
-Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.
-In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.
+Azure Arc wordt door veel organisaties gezien als een logische en relatief “veilige” uitbreiding van Azure‑beheer naar on‑premises en multi‑cloud omgevingen. Het voelt als beheer, niet als identity‑infrastructuur. Precies dát beeld maakt kwetsbaarheden in Azure Arc extra interessant – en gevaarlijk.
+
+De afgelopen jaren zien we een duidelijke trend: steeds meer cloudfunctionaliteit wordt verplaatst naar agents die lokaal draaien, maar namens de cloud handelen. Azure Arc is daar een schoolvoorbeeld van. 
+
+De Arc agent is geen passieve monitor, maar een actief onderdeel van de Azure control plane, met toegang tot identiteiten, configuraties en beheertaken.
+In dit artikel kijken we naar CVE‑2026‑26117, een kwetsbaarheid in de Azure Arc agent voor Windows die op het eerste gezicht “slechts” een lokale privilege escalation lijkt. Het onderzoek van Cymulate laat echter zien dat de impact veel verder reikt: van lokale escalatie naar cloud identity takeover.
+Dit blog is bewust technisch ingestoken. Niet om een exploit te beschrijven, maar om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.
+
 
 <ins>Wat is Azure Arc?:</ins>
 
