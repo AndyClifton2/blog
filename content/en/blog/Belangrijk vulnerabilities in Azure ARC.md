@@ -64,6 +64,6 @@ Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als ee
 ## <ins> Aanvalsketen (technisch) </ins>
 
 De aanvaller begint met een normale gebruiker in de ARC-gekoppelde machine.
-![alt](/Images/vulnability/azurearc7.png)
+![alt](/Images/vulnability/AzureArc7.png)
 
 
