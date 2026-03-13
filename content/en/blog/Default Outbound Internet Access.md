@@ -1,6 +1,6 @@
 ---
 Author: "Andy Clifton"
-title: "Default Outbound Internet Access"
+title: "**Belangrijk** Vulnaribility in Azure ARC"
 description: "Default Outbound Internet Access niet langer by default allowed."
 date: 2025-08-13
 tags: ["Networking"]
@@ -24,10 +24,10 @@ Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero T
 Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.
 
 ![alt](/Images/Outbound/network.jpeg)
-<ins>Wat Zijn de gevolgen?</ins>
+<ins>Wat zijn de gevolgen?</ins>
 
 Tot nu toe gaf Azure je automatisch internettoegang als je een nieuw Virtual Network aanmaakte.
-Handig, toch? Je hoefde niks extra’s te doen—je VM kon gewoon het internet op.
+Handig, toch? Je hoefde niks extra’s te doen. Je VM kon gewoon het internet op.
 Maar vanaf 30 september is dat verleden tijd. Microsoft zet deze automatische toegang uit.
 
 <ins>Wat merk jij ervan?</ins>
@@ -43,16 +43,16 @@ Maar vanaf 30 september is dat verleden tijd. Microsoft zet deze automatische to
 - Legacy-architecturen moeten mogelijk worden aangepast.
 - Het dwingt teams om bewuster om te gaan met netwerkbeveiliging en outbound flows.
 
-**Voor bestaande Vnet's veranderd er op dit moment nog niks**
+**Voor bestaande Vnet's verandert er op dit moment nog niks**
 
-## Welke oplossingen zijn er om dit dan goed te regelen.
+## Welke oplossingen zijn er om dit dan goed te regelen?
 
 ![alt](/Images/Outbound/optie.jpeg)
 
 
 **Azure NAT Gateway**
 
-Dit is de aanbovolen oplossing voor de meeste omgevingen door Microsoft waarom:
+Dit is de aanbovolen oplossing voor de meeste omgevingen door Microsoft omdat:
 
 *Verbeterde Security*
 
@@ -243,15 +243,15 @@ Write-Host "✅ Rapport opgeslagen als 'OutboundAccessReport.csv'"
 
 ````
 
-We hebben nu onderzocht welke machines een Public IP hebben,NSG Rules hebben of een Internet Route.
+We hebben nu onderzocht welke machines een Public IP hebben, NSG Rules hebben of een Internet Route.
 Nu moeten we de gekozen optie implementeren. Het aanmaken van een Azure Firewall zullen we later nog eens bespreken,
-Public IP toevoegen spreekt voor zich, dus we gaan nu het aanmaken van een Azure NAT Gateway aanmaken.
+Public IP toevoegen spreekt voor zich, dus we gaan nu een Azure NAT Gateway aanmaken.
 
 ## Aanmaken van een Azure NAT Gateway.
 ![Image](/Images/Outbound/Nat.png)
 
 Azure NAT Gateway is de aanbevolen oplossing om veilige en schaalbare outbound internettoegang te bieden voor je virtuele machines en andere resources in Azure. Met NAT Gateway kun je outbound verkeer centraliseren en beheren, zodat je precies weet welke IP-adressen worden gebruikt voor internettoegang. Dit maakt het eenvoudiger om firewallregels toe te passen, monitoring in te richten en je netwerkarchitectuur te beveiligen. Daarnaast zorgt NAT Gateway voor hoge beschikbaarheid en ondersteunt het duizenden gelijktijdige verbindingen, waardoor het geschikt is voor zowel kleine als grote omgevingen. Hieronder lees je hoe je een NAT Gateway aanmaakt en configureert.
-Maar hoe configureer je dit nu:
+Maar hoe configureer je dit nu?:
 
 Log in op de Azure portal en klik op **Create a resource**.
 
@@ -339,14 +339,14 @@ $NATSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetwork | 
 
 ````
 
-Nu is de NAT Gateway gedeployed en geconfigureerd het enige wat nu nog moet gebeuren, is inloggen op de VM en testen of outbound verkeer werkt.
+Nu is de NAT Gateway gedeployed en geconfigureerd, het enige wat nu nog moet gebeuren is inloggen op de VM en testen of outbound verkeer werkt.
 
 ## Wil je nu al zorgen voor een uniforme aanpak? Pak dan meteen de standaard internettoegang in bestaande VNets aan.
 
 Dat doe je zo:
 
 🔒 *Blokkeer ongewenst internetverkeer*
-Maak een outbound NSG-regel die al het verkeer naar het internet tegenhoudt — behalve via jouw gekozen route.
+Maak een outbound NSG-regel die al het verkeer naar het internet tegenhoudt, behalve via jouw gekozen route.
 
 🚧 *Stuur het verkeer bewust de juiste kant op*
 Koppel expliciet een NAT Gateway of Firewall aan je VNet en zorg dat andere routes verdwijnen uit het plaatje.

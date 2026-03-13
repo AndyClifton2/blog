@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/WebPage"><head>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -10,15 +10,12 @@
   </title>
   <meta name="description" content="Default Outbound Internet Access niet langer by default allowed." />
   <meta name="author" content="Andy Clifton" />
-  <meta name="generator" content="Hugo 0.148.2"><link
-    rel="stylesheet"
-    href="/css/styles.min.5d6fc9d4c39d720ef024bef64b70a099b88b309fd583b6c7ea32f1592512becc.css"
-    integrity="sha256-XW/J1MOdcg7wJL72S3CgmbiLMJ/Vg7bH6jLxWSUSvsw="
-  />
+  <meta name="generator" content="Hugo 0.148.2">
+  <link rel="stylesheet" href="/css/styles.css" />
   
   
 
-  <meta property="og:url" content="/en/blog/default-outbound-internet-access/">
+  <meta property="og:url" content="//localhost:1313/en/blog/default-outbound-internet-access/">
   <meta property="og:site_name" content="Andy Cliftons Blog">
   <meta property="og:title" content="Default Outbound Internet Access">
   <meta property="og:description" content="Default Outbound Internet Access niet langer by default allowed.">
@@ -39,13 +36,13 @@
   <meta itemprop="description" content="Default Outbound Internet Access niet langer by default allowed.">
   <meta itemprop="datePublished" content="2025-08-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-08-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1877">
+  <meta itemprop="wordCount" content="1875">
   <meta itemprop="keywords" content="Networking">
 
   
 </head>
 <body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen"><header class="container flex justify-between md:justify-between gap-4 flex-wrap p-6 mx-auto relative">
-  <a href="/en/" class="capitalize font-extrabold text-2xl">
+  <a href="//localhost:1313/en/" class="capitalize font-extrabold text-2xl">
     
     <img src="/raw.png" alt="Andy Cliftons Blog" class="h-8 max-w-full" />
     
@@ -148,7 +145,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      1877 words
+      1875 words
       
         
       
@@ -187,7 +184,7 @@
 
         
         </li><li>
-        <a href="#welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen">Welke oplossingen zijn er om dit dan goed te regelen.</a>
+        <a href="#welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen">Welke oplossingen zijn er om dit dan goed te regelen?</a>
         
 
         
@@ -218,9 +215,9 @@ Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkee
 Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.
 Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.</p>
 <p><img src="/Images/Outbound/network.jpeg" alt="alt">
-<ins>Wat Zijn de gevolgen?</ins></p>
+<ins>Wat zijn de gevolgen?</ins></p>
 <p>Tot nu toe gaf Azure je automatisch internettoegang als je een nieuw Virtual Network aanmaakte.
-Handig, toch? Je hoefde niks extra’s te doen—je VM kon gewoon het internet op.
+Handig, toch? Je hoefde niks extra’s te doen. Je VM kon gewoon het internet op.
 Maar vanaf 30 september is dat verleden tijd. Microsoft zet deze automatische toegang uit.</p>
 <p><ins>Wat merk jij ervan?</ins></p>
 <ul>
@@ -235,11 +232,11 @@ Maar vanaf 30 september is dat verleden tijd. Microsoft zet deze automatische to
 <li>Legacy-architecturen moeten mogelijk worden aangepast.</li>
 <li>Het dwingt teams om bewuster om te gaan met netwerkbeveiliging en outbound flows.</li>
 </ul>
-<p><strong>Voor bestaande Vnet&rsquo;s veranderd er op dit moment nog niks</strong></p>
-<h2 id="welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen">Welke oplossingen zijn er om dit dan goed te regelen.</h2>
+<p><strong>Voor bestaande Vnet&rsquo;s verandert er op dit moment nog niks</strong></p>
+<h2 id="welke-oplossingen-zijn-er-om-dit-dan-goed-te-regelen">Welke oplossingen zijn er om dit dan goed te regelen?</h2>
 <p><img src="/Images/Outbound/optie.jpeg" alt="alt"></p>
 <p><strong>Azure NAT Gateway</strong></p>
-<p>Dit is de aanbovolen oplossing voor de meeste omgevingen door Microsoft waarom:</p>
+<p>Dit is de aanbovolen oplossing voor de meeste omgevingen door Microsoft omdat:</p>
 <p><em>Verbeterde Security</em></p>
 <p>NAT Gateway biedt gecontroleerde outbound internettoegang, waardoor je precies kunt bepalen welke resources toegang hebben tot het internet. Dit sluit ongecontroleerde verbindingen uit en past beter bij Zero Trust principes.</p>
 <p><em>Logging en Monitoring</em></p>
@@ -375,13 +372,13 @@ foreach ($vm in $vms) {
 # Export to CSV
 $results | Export-Csv -Path &#34;OutboundAccessReport.csv&#34; -NoTypeInformation
 Write-Host &#34;✅ Rapport opgeslagen als &#39;OutboundAccessReport.csv&#39;&#34;
-</code></pre><p>We hebben nu onderzocht welke machines een Public IP hebben,NSG Rules hebben of een Internet Route.
+</code></pre><p>We hebben nu onderzocht welke machines een Public IP hebben, NSG Rules hebben of een Internet Route.
 Nu moeten we de gekozen optie implementeren. Het aanmaken van een Azure Firewall zullen we later nog eens bespreken,
-Public IP toevoegen spreekt voor zich, dus we gaan nu het aanmaken van een Azure NAT Gateway aanmaken.</p>
+Public IP toevoegen spreekt voor zich, dus we gaan nu een Azure NAT Gateway aanmaken.</p>
 <h2 id="aanmaken-van-een-azure-nat-gateway">Aanmaken van een Azure NAT Gateway.</h2>
 <p><img src="/Images/Outbound/Nat.png" alt="Image"></p>
 <p>Azure NAT Gateway is de aanbevolen oplossing om veilige en schaalbare outbound internettoegang te bieden voor je virtuele machines en andere resources in Azure. Met NAT Gateway kun je outbound verkeer centraliseren en beheren, zodat je precies weet welke IP-adressen worden gebruikt voor internettoegang. Dit maakt het eenvoudiger om firewallregels toe te passen, monitoring in te richten en je netwerkarchitectuur te beveiligen. Daarnaast zorgt NAT Gateway voor hoge beschikbaarheid en ondersteunt het duizenden gelijktijdige verbindingen, waardoor het geschikt is voor zowel kleine als grote omgevingen. Hieronder lees je hoe je een NAT Gateway aanmaakt en configureert.
-Maar hoe configureer je dit nu:</p>
+Maar hoe configureer je dit nu?:</p>
 <p>Log in op de Azure portal en klik op <strong>Create a resource</strong>.</p>
 <p><img src="/Images/Outbound/NatGateway.png" alt="Image"></p>
 <p>Vul in <strong>NAT Gateway</strong> en klik op <strong>Create</strong>.</p>
@@ -438,11 +435,11 @@ $natGateway  | Select-Object Name, ResourceGroupName, IdleTimeoutInMinutes , SKu
 
 $virtualNetwork = Get-AzVirtualNetwork | Out-GridView -PassThru -Title &#34;Kies je VNET&#34;
 $NATSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $virtualNetwork | Out-GridView -PassThru -Title &#34;Kies de Subnets&#34;
-</code></pre><p>Nu is de NAT Gateway gedeployed en geconfigureerd het enige wat nu nog moet gebeuren, is inloggen op de VM en testen of outbound verkeer werkt.</p>
+</code></pre><p>Nu is de NAT Gateway gedeployed en geconfigureerd, het enige wat nu nog moet gebeuren is inloggen op de VM en testen of outbound verkeer werkt.</p>
 <h2 id="wil-je-nu-al-zorgen-voor-een-uniforme-aanpak-pak-dan-meteen-de-standaard-internettoegang-in-bestaande-vnets-aan">Wil je nu al zorgen voor een uniforme aanpak? Pak dan meteen de standaard internettoegang in bestaande VNets aan.</h2>
 <p>Dat doe je zo:</p>
 <p>🔒 <em>Blokkeer ongewenst internetverkeer</em>
-Maak een outbound NSG-regel die al het verkeer naar het internet tegenhoudt — behalve via jouw gekozen route.</p>
+Maak een outbound NSG-regel die al het verkeer naar het internet tegenhoudt, behalve via jouw gekozen route.</p>
 <p>🚧 <em>Stuur het verkeer bewust de juiste kant op</em>
 Koppel expliciet een NAT Gateway of Firewall aan je VNet en zorg dat andere routes verdwijnen uit het plaatje.</p>
 <p>Zo houd je de touwtjes stevig in handen en voorkom je dat verkeer stiekem via de achterdeur naar buiten glipt.</p>
@@ -780,7 +777,7 @@ Koppel expliciet een NAT Gateway of Firewall aan je VNet en zorg dat andere rout
 
 
 
-<script src="/js/scripts.min.js"></script>
+<script src="//localhost:1313/js/scripts.min.js"></script>
 
 
 
