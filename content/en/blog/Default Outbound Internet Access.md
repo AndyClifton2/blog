@@ -1,8 +1,8 @@
 ---
 Author: "Andy Clifton"
-title: "**Belangrijk** Vulnaribility in Azure ARC"
+title: "*Default Outbound Internet Access*"
 description: "Default Outbound Internet Access niet langer by default allowed."
-date: 2025-08-13
+date: 2025-08-12
 tags: ["Networking"]
 thumbnail: "/img/outbound.jpeg"
 ---

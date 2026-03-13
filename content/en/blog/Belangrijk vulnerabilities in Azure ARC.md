@@ -2,7 +2,7 @@
 Author: "Andy Clifton"
 title: "Belangrijke vulnerabilities Azure Arc"
 description: "Test omgeving Azure Arc."
-date: 2024-01-03
+date: 2026-03-13
 tags: ["ARC"]
 thumbnail: "/img/download.jpeg"
 ---

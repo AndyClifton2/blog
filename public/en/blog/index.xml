@@ -6,12 +6,19 @@
     <description>Recent content in Blog on Andy Cliftons Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/en/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>**Belangrijk** Vulnaribility in Azure ARC</title>
+      <title>Belangrijke vulnerabilities Azure Arc</title>
+      <link>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</guid>
+      <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>*Default Outbound Internet Access*</title>
       <link>//localhost:1313/en/blog/default-outbound-internet-access/</link>
-      <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/en/blog/default-outbound-internet-access/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
     </item>
@@ -42,13 +49,6 @@
       <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/en/blog/eenmalige-authenticatie-voor-guest-users/</guid>
       <description>&lt;h1 id=&#34;eenmalige-toegangscode-voor-azure-ad-b2b-guest-users&#34;&gt;Eenmalige toegangscode voor Azure AD B2B-Guest Users&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;AzureAD B2B staat externe gebruikers toe om toepassingen, services en gegevens van de Tenant te gebruiken.&#xA;Om gasten toegang toe te staan moeten ze een AzureAD account, Microsoft account of een Google Federation hebben. (Voor @gmail.com en @googlemail.com gebruikers).&#xA;Mocht een user nu geen van deze accounts hebben dan kan er toch connectie gemaakt worden met een eenmalige toegangscode.&#xA;Deze code wordt naar het mailadres van de guest user gestuurd en de code blijft dan voor 30 minuten geldig.&#xA;Zodra de guest user zichzelf heeft geautentiseerd blijft de sessie 24 uur valid, daarna moet de user een nieuwe code aanvragen om opnieuw te kunnen inloggen.&#xA;Gebruikers van een eenmalige toegangscode moeten gebruik maken van onderstaande links wanneer ze zich authenticeren:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Configure Azure ARC in een test omgeving</title>
-      <link>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</link>
-      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</guid>
-      <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Configure Azure ARC in een test omgeving</title>
