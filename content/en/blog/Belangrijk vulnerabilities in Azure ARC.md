@@ -21,24 +21,24 @@ De afgelopen jaren zien we een duidelijke trend: steeds meer cloudfunctionalitei
 
 De Arc agent is geen passieve monitor, maar een actief onderdeel van de Azure control plane, met toegang tot identiteiten, configuraties en beheertaken.
 In dit artikel kijken we naar CVE‑2026‑26117, een kwetsbaarheid in de Azure Arc agent voor Windows die op het eerste gezicht “slechts” een lokale privilege escalation lijkt. Het onderzoek van Cymulate laat echter zien dat de impact veel verder reikt: van lokale escalatie naar cloud identity takeover.
-Dit blog is bewust technisch ingestoken. Niet om een exploit te beschrijven, maar om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.
+Deze blog is bewust technisch ingestoken om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.
 
 
 ## <ins>waarom Azure Arc hier kwetsbaar is:</ins>
 
-Azure Arc‑enabled servers vertrouwen op een agent‑gebaseerd trustmodel:
+Azure Arc‑enabled servers vertrouwen op een agent‑based trustmodel:
 Belangrijke componenten (Windows)
 
-azcmagent – hoofdagent voor Azure Arc
-HIMDS (Hybrid Instance Metadata Service) – lokale metadata endpoint
-Guest Configuration service
-Arc Proxy service
+-azcmagent – agent voor Azure Arc
+-HIMDS (Hybrid Instance Metadata Service) – lokale metadata endpoint
+-Guest Configuration service
+-Arc Proxy service
 
 Deze services draaien lokaal met verhoogde privileges en zijn verantwoordelijk voor:
 
-authenticatie richting Azure
-token‑acquisitie voor de machine‑identiteit
-uitvoeren van cloud‑geïnitieerde acties (extensions, policies)
+-authenticatie richting Azure
+-token‑acquisitie voor de machine‑identiteit
+-uitvoeren van cloud‑geïnitieerde acties (extensions, policies)
 
 De kern van het probleem:
 
@@ -94,4 +94,20 @@ verkrijgt de aanvaller volledige controle over het OS
 
 Dit maakt laterale beweging en persistence triviaal.
 ![alt](/Images/vulnability/AzureArc11.png)
+
+<ins>Stap 4 – Cloud Identity Impersonation </ins>
+Na SYSTEM‑toegang:
+
+kan de aanvaller tokens verkrijgen voor de Azure Arc machine‑identiteit
+deze identiteit kan Azure RBAC‑rechten hebben
+
+Voorbeelden van misbruik:
+
+aanpassen van Azure resource properties
+uitvoeren van Arc extensions
+uitlezen of wijzigen van configuraties
+interactie met andere Azure resources binnen RBAC‑scope
+
+![alt](/Images/vulnability/AzureArc13.png)
+![alt](/Images/vulnability/AzureArc14.png)
 
