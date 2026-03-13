@@ -46,7 +46,7 @@ Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl 
 
 
 
-<ins>Technische oorzaak (CWE‑288)</ins>
+## <ins>Technische oorzaak (CWE‑288)</ins>
 
 
 Microsoft classificeert CVE‑2026‑26117 als:
@@ -60,3 +60,10 @@ authenticatie tussen componenten kan worden omzeild via alternatieve communicati
 responses van interne services gemanipuleerd kunnen worden
 
 Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.
+
+## <ins> Aanvalsketen (technisch) </ins>
+
+De aanvaller begint met een normale gebruiker in de ARC-gekoppelde machine.
+![alt](/Images/vulnability/azurearc7.png)
+
+

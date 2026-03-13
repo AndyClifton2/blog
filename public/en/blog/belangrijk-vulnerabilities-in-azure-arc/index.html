@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="335">
+  <meta itemprop="wordCount" content="348">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      335 words
+      348 words
       
         
       
@@ -181,6 +181,16 @@
         
         </li><li>
         <a href="#waarom-azure-arc-hier-kwetsbaar-is"><ins>waarom Azure Arc hier kwetsbaar is:</ins></a>
+        
+
+        
+        </li><li>
+        <a href="#technische-oorzaak-cwe288"><ins>Technische oorzaak (CWE‑288)</ins></a>
+        
+
+        
+        </li><li>
+        <a href="#aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></a>
         </li></ul>
   </details>
 
@@ -204,7 +214,7 @@ token‑acquisitie voor de machine‑identiteit
 uitvoeren van cloud‑geïnitieerde acties (extensions, policies)</p>
 <p>De kern van het probleem:</p>
 <p>Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl die communicatie benaderbaar is door een lokale gebruiker met lage privileges.</p>
-<p><ins>Technische oorzaak (CWE‑288)</ins></p>
+<h2 id="technische-oorzaak-cwe288"><ins>Technische oorzaak (CWE‑288)</ins></h2>
 <p>Microsoft classificeert CVE‑2026‑26117 als:</p>
 <p>Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]</p>
 <p>Concreet betekent dit dat:</p>
@@ -212,6 +222,9 @@ uitvoeren van cloud‑geïnitieerde acties (extensions, policies)</p>
 authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
 responses van interne services gemanipuleerd kunnen worden</p>
 <p>Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.</p>
+<h2 id="aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></h2>
+<p>De aanvaller begint met een normale gebruiker in de ARC-gekoppelde machine.
+<img src="/Images/vulnability/azurearc7.png" alt="alt"></p>
 
 <div class="px-2 mb-2">
   
