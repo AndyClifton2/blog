@@ -24,7 +24,7 @@ In dit artikel kijken we naar CVE‑2026‑26117, een kwetsbaarheid in de Azure 
 Dit blog is bewust technisch ingestoken. Niet om een exploit te beschrijven, maar om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.
 
 
-<ins>waarom Azure Arc hier kwetsbaar is:</ins>
+## <ins>waarom Azure Arc hier kwetsbaar is:</ins>
 
 Azure Arc‑enabled servers vertrouwen op een agent‑gebaseerd trustmodel:
 Belangrijke componenten (Windows)
