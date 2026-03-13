@@ -46,8 +46,15 @@ Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl 
 
 
 
+<ins>Technische oorzaak (CWE‑288)</ins>
+Microsoft classificeert CVE‑2026‑26117 als:
 
+Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]
 
-Hiermee is de installatie van Azure Arc afgerond en kun je de machines die je hebt gebruiken om Azure Policy's, Update management, Logic Apps of andere dingen erop los te laten.
-Later maak ik nog een blog over hoe je Update manager gebruikt op je Azure Arc machines.
+Concreet betekent dit dat:
 
+interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
+authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
+responses van interne services gemanipuleerd kunnen worden
+
+Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.

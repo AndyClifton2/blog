@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="325">
+  <meta itemprop="wordCount" content="335">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      325 words
+      335 words
       
         
       
@@ -199,8 +199,14 @@ token‑acquisitie voor de machine‑identiteit
 uitvoeren van cloud‑geïnitieerde acties (extensions, policies)</p>
 <p>De kern van het probleem:</p>
 <p>Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl die communicatie benaderbaar is door een lokale gebruiker met lage privileges.</p>
-<p>Hiermee is de installatie van Azure Arc afgerond en kun je de machines die je hebt gebruiken om Azure Policy&rsquo;s, Update management, Logic Apps of andere dingen erop los te laten.
-Later maak ik nog een blog over hoe je Update manager gebruikt op je Azure Arc machines.</p>
+<p><ins>Technische oorzaak (CWE‑288)</ins>
+Microsoft classificeert CVE‑2026‑26117 als:</p>
+<p>Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]</p>
+<p>Concreet betekent dit dat:</p>
+<p>interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
+authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
+responses van interne services gemanipuleerd kunnen worden</p>
+<p>Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.</p>
 
 <div class="px-2 mb-2">
   
