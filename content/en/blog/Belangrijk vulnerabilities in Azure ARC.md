@@ -4,7 +4,7 @@ title: "Belangrijke vulnerabilities Azure Arc"
 description: "Test omgeving Azure Arc."
 date: 2026-03-13
 tags: ["ARC"]
-thumbnail: "/img/download.jpg"
+thumbnail: "/img/designer.png"
 ---
 
 
