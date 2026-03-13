@@ -9,18 +9,18 @@
     <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>**Default Outbound Internet Access**</title>
-      <link>//localhost:1313/en/blog/default-outbound-internet-access/</link>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/en/blog/default-outbound-internet-access/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Belangrijke vulnerabilities Azure Arc</title>
       <link>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</link>
-      <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</guid>
       <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>*Default Outbound Internet Access*</title>
+      <link>//localhost:1313/en/blog/default-outbound-internet-access/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/blog/default-outbound-internet-access/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/Images/Outbound/Outbound.Jpeg&#34; alt=&#34;alt&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;default-outbound-internet-access-wordt-uitgeschakeld&#34;&gt;Default Outbound Internet Access wordt uitgeschakeld&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Tot nu toe gaf Microsoft standaard outbound internettoegang aan elk nieuw Virtual Network.&#xA;Dat gebeurde automatisch via een default route naar het internet, zonder dat je daar iets voor hoefde te doen.&#xA;Deze standaardinstelling gaf automatisch internettoegang zonder dat je dit expliciet hoefde te configureren.&#xA;Dat leek handig, maar het bracht risico’s met zich mee: ongecontroleerd verkeer, moeilijk te monitoren, en kwetsbaar voor datalekken.&#xA;Securityteams hadden minder grip op outbound flows, wat niet paste binnen Zero Trust principes.&#xA;Vanaf nu moet je zelf expliciet outbound access regelen via NAT Gateway of andere oplossingen.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Installeren en configureren van SCOM Managed Instance</title>

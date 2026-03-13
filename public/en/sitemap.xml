@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/en/blog/default-outbound-internet-access/</loc>
+    <loc>//localhost:1313/en/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/</loc>
+    <loc>//localhost:1313/en/tags/arc/</loc>
+    <lastmod>2026-03-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/blog/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/networking/</loc>
-    <lastmod>2026-03-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/en/tags/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/tags/arc/</loc>
-    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/en/blog/default-outbound-internet-access/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/en/blog/belangrijk-vulnerabilities-in-azure-arc/</loc>
-    <lastmod>2025-03-13T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/en/tags/networking/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/en/tags/emoji/</loc>
     <lastmod>2024-05-07T00:00:00+00:00</lastmod>
