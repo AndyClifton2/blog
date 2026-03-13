@@ -209,30 +209,32 @@ Belangrijke componenten (Windows)</p>
 -Guest Configuration service
 -Arc Proxy service</p>
 <p>Deze services draaien lokaal met verhoogde privileges en zijn verantwoordelijk voor:</p>
-<p>-authenticatie richting Azure
--token‑acquisitie voor de machine‑identiteit
--uitvoeren van cloud‑geïnitieerde acties (extensions, policies)</p>
+<ul>
+<li>Authenticatie richting Azure</li>
+<li>Token‑acquisitie voor de machine‑identiteit</li>
+<li>Uitvoeren van cloud‑geïnitieerde acties (extensions, policies)</li>
+</ul>
 <p>De kern van het probleem:</p>
 <p>Lokale service‑to‑service communicatie wordt beschouwd als trusted, terwijl die communicatie benaderbaar is door een lokale gebruiker met lage privileges.</p>
 <h2 id="technische-oorzaak-cwe288"><ins>Technische oorzaak (CWE‑288)</ins></h2>
 <p>Microsoft classificeert CVE‑2026‑26117 als:</p>
 <p>Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.gov]</p>
 <p>Concreet betekent dit dat:</p>
-<p>interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
-authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
-responses van interne services gemanipuleerd kunnen worden</p>
+<p>-interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
+-authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
+-responses van interne services gemanipuleerd kunnen worden</p>
 <p>Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.</p>
 <h2 id="aanvalsketen-technisch"><ins> Aanvalsketen (technisch) </ins></h2>
 <p><ins> Stap 1 – Initiële toegang (Local, Low Privilege) </ins>
 De aanvaller heeft:</p>
-<p>een lokale Windows‑account
-geen admin‑rechten nodig</p>
+<p>-een lokale Windows‑account
+-geen admin‑rechten nodig</p>
 <p>Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.</p>
 <p><img src="/Images/vulnability/AzureArc7.png" alt="alt"></p>
 <p><ins>Stap 2 – Interceptie van Arc‑service communicatie </ins>
 De aanvaller:</p>
-<p>onderschept of imiteert communicatie tussen Arc‑services
-misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy</p>
+<p>-onderschept of imiteert communicatie tussen Arc‑services
+-misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy</p>
 <p>Resultaat:
 De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.</p>
 <p><img src="/Images/vulnability/AzureArc8.png" alt="alt">

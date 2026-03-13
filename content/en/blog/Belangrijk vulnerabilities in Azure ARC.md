@@ -36,9 +36,9 @@ Belangrijke componenten (Windows)
 
 Deze services draaien lokaal met verhoogde privileges en zijn verantwoordelijk voor:
 
--authenticatie richting Azure
--token‑acquisitie voor de machine‑identiteit
--uitvoeren van cloud‑geïnitieerde acties (extensions, policies)
+- Authenticatie richting Azure
+- Token‑acquisitie voor de machine‑identiteit
+- Uitvoeren van cloud‑geïnitieerde acties (extensions, policies)
 
 De kern van het probleem:
 
@@ -55,9 +55,9 @@ Authentication Bypass Using an Alternate Path or Channel (CWE‑288) [nvd.nist.g
 
 Concreet betekent dit dat:
 
-interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
-authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
-responses van interne services gemanipuleerd kunnen worden
+-interne Arc‑services onvoldoende afdwingen wie hen mag aanspreken
+-authenticatie tussen componenten kan worden omzeild via alternatieve communicatiepaden
+-responses van interne services gemanipuleerd kunnen worden
 
 Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als een vertrouwde Arc‑component.
 
@@ -66,8 +66,8 @@ Hierdoor kan een niet‑bevoegde lokale gebruiker zich effectief voordoen als ee
 <ins> Stap 1 – Initiële toegang (Local, Low Privilege) </ins>
 De aanvaller heeft:
 
-een lokale Windows‑account
-geen admin‑rechten nodig
+-een lokale Windows‑account
+-geen admin‑rechten nodig
 
 Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.
 
@@ -77,8 +77,8 @@ Dit kan een service‑account, support‑user of gecompromitteerde applicatie zi
 <ins>Stap 2 – Interceptie van Arc‑service communicatie </ins>
 De aanvaller:
 
-onderschept of imiteert communicatie tussen Arc‑services
-misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy
+-onderschept of imiteert communicatie tussen Arc‑services
+-misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy
 
 Resultaat:
 De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.
