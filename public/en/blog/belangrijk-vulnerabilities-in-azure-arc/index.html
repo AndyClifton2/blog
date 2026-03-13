@@ -39,7 +39,7 @@
   <meta itemprop="description" content="Test omgeving Azure Arc.">
   <meta itemprop="datePublished" content="2026-03-13T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="380">
+  <meta itemprop="wordCount" content="404">
   <meta itemprop="keywords" content="ARC">
 
   
@@ -148,7 +148,7 @@
         <line x1="12" y1="6" x2="12" y2="19" />
         <line x1="21" y1="6" x2="21" y2="19" />
       </svg>
-      380 words
+      404 words
       
         
       
@@ -229,7 +229,13 @@ De aanvaller heeft:</p>
 geen admin‑rechten nodig</p>
 <p>Dit kan een service‑account, support‑user of gecompromitteerde applicatie zijn.</p>
 <p><img src="/Images/vulnability/AzureArc7.png" alt="alt"></p>
-<p>Voorafgaand aan exploitatie stelt de aanvaller een ARC-gekoppeld apparaat op in zijn eigen door aanvaller gecontroleerde tenant</p>
+<p><ins>Stap 2 – Interceptie van Arc‑service communicatie </ins>
+De aanvaller:</p>
+<p>onderschept of imiteert communicatie tussen Arc‑services
+misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy</p>
+<p>Resultaat:
+De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.</p>
+<p><img src="/Images/vulnability/AzureArc8.png" alt="alt"></p>
 
 <div class="px-2 mb-2">
   

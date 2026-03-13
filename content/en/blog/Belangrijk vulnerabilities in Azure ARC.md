@@ -74,5 +74,13 @@ Dit kan een service‑account, support‑user of gecompromitteerde applicatie zi
 ![alt](/Images/vulnability/AzureArc7.png)
 
 
-Voorafgaand aan exploitatie stelt de aanvaller een ARC-gekoppeld apparaat op in zijn eigen door aanvaller gecontroleerde tenant
+<ins>Stap 2 – Interceptie van Arc‑service communicatie </ins>
+De aanvaller:
 
+onderschept of imiteert communicatie tussen Arc‑services
+misbruikt zwakke authenticatie tussen HIMDS / Guest Configuration / Arc Proxy
+
+Resultaat:
+De aanvaller kan valse responses injecteren die door andere Arc‑componenten als legitiem worden gezien.
+
+![alt](/Images/vulnability/AzureArc8.png)
