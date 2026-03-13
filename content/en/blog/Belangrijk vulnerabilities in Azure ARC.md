@@ -24,10 +24,11 @@ In dit artikel kijken we naar CVE‑2026‑26117, een kwetsbaarheid in de Azure 
 Deze blog is bewust technisch ingestoken om inzicht te geven in waar de trust boundaries liggen, hoe deze kwetsbaarheid ontstaat, en wat dit betekent voor de manier waarop we Azure Arc architectonisch en security‑matig moeten benaderen.
 
 
-## <ins>waarom Azure Arc hier kwetsbaar is:</ins>
+## <ins>Waarom Azure Arc hier kwetsbaar is:</ins>
 
-Azure Arc‑enabled servers vertrouwen op een agent‑based trustmodel:
-Belangrijke componenten (Windows)
+Azure Arc‑enabled servers vertrouwen op een agent‑based trustmodel
+
+Belangrijke (Windows) componenten zoals:
 
 - azcmagent – agent voor Azure Arc
 - HIMDS (Hybrid Instance Metadata Service) – lokale metadata endpoint
@@ -87,6 +88,7 @@ De aanvaller kan valse responses injecteren die door andere Arc‑componenten al
 ![alt](/Images/vulnability/AzureArc9.png)
 
 <ins>Stap 3 – Local Privilege Escalation </ins>
+
 Door misbruik van service‑interactie:
 
 - Worden acties uitgevoerd in de context van SYSTEM
@@ -112,13 +114,13 @@ Voorbeelden van misbruik:
 ![alt](/Images/vulnability/AzureArc13.png)
 ![alt](/Images/vulnability/AzureArc14.png)
 
-Stap 5 – Tenant Hijack (worst‑case)
+<ins>Stap 5 – Tenant Hijack (worst‑case) </ins>
 Cymulate toont aan dat het mogelijk is om:
 
 - De machine opnieuw te laten onboarden
-- Richting een aanvaller‑gecontroleerde tenant
+- Richting een door de aanvaller‑gecontroleerde tenant
 
-Hiermee verliest de oorspronkelijke tenant volledig zicht en controle op de machine. [cymulate.com]
+Hiermee verliest de oorspronkelijke tenant volledig zicht en controle op de machine.
 
 ## Impactanalyse
 
@@ -135,19 +137,21 @@ Kwetsbaar zijn:
 
 <ins> 1. Patchniveau afdwingen </ins>
 
-Microsoft heeft het probleem opgelost in:
+Microsoft heeft het probleem opgelost in
+
 Azure Arc Agent Services version 1.61
 
-Updaten en agent services herstarten is vereist (Dit kan gedaan worden via Update Manager of lokaal via Windows Update)
+Updaten en agent services herstarten is vereist. (Dit kan gedaan worden via Update Manager of lokaal via Windows Update)
 
 
 <ins> 2. Azure RBAC minimaliseren </ins>
 
 Controleer:
 
-welke Arc‑machine‑identiteiten rechten hebben
-verwijder Contributor‑achtige rollen waar mogelijk
-gebruik custom roles met minimale permissions
+- Welke Arc‑machine‑identity's rechten hebben.
+- Verwijder Contributor‑achtige rollen waar mogelijk
+- Gebruik custom roles met minimale permissions
+
 90% van de rechten die uitgedeeld worden zijn overbodig. Met een EPM achtige oplossing kun je goed controleren welke rechten accounts of Identity's ook echt nodig hebben.
 
 <ins> 3. Beschouw Arc als Tier‑0 component </ins>
@@ -165,9 +169,9 @@ Zet dus ook zoveel mogelijk rechten en mogelijkheden achter PIM rollen.
 
 Let op:
 
-herregistratie‑events van Arc machines
-token usage van machine identities
-ongebruikelijke ARM API calls vanuit Arc‑identiteiten
+- Herregistratie‑events van Arc machines
+- Token usage van machine identities
+- Ongebruikelijke ARM API calls vanuit Arc‑identity's
 
 Dit zijn allemaal dingen die je wilt opvangen in een Application Log en wil laten terugkomen in Azure Monitor of Sentinel.
 
@@ -175,9 +179,8 @@ Dit zijn allemaal dingen die je wilt opvangen in een Application Log en wil late
 
 Wat deze kwetsbaarheid vooral blootlegt, is een verschuiving in architectuur denken. Waar vroeger identiteit en autorisatie primair in het datacenter of in Azure zelf lagen, verschuift die verantwoordelijkheid steeds vaker naar agents aan de rand van het netwerk.
 Azure Arc is daarin geen uitzondering, maar een voorbode.
-Wie Azure Arc gebruikt, doet er goed aan om niet alleen te vragen “wat kan ik ermee beheren?”, maar vooral “welke vertrouwenspositie geef ik deze agent?”.
+Wie Azure Arc gebruikt, doet er goed aan om niet alleen te vragen “Wat kan ik ermee beheren?”, maar vooral “Welke vertrouwenspositie geef ik deze agent?”
 
 CVE‑2026‑26117 laat zien dat dat geen theoretische vraag meer is.
 
-## Azure Arc is functioneel krachtig, maar verschuift ook identity en trust naar de edge.
-## Dat vereist een ander beveiligingsmodel dan traditionele on‑prem tooling.
+## Azure Arc is functioneel krachtig, maar verschuift ook identity en trust naar de edge. Dat vereist een ander beveiligingsmodel dan traditionele on‑prem tooling.
