@@ -10,9 +10,9 @@
     <atom:link href="/en/tags/arc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configure Azure ARC in een test omgeving</title>
-      <link>/en/blog/belangrijk-vulnaribility-in-azure-arc/</link>
+      <link>/en/blog/belangrijk-vulnerabilities-in-azure-arc/</link>
       <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/en/blog/belangrijk-vulnaribility-in-azure-arc/</guid>
+      <guid>/en/blog/belangrijk-vulnerabilities-in-azure-arc/</guid>
       <description>&lt;h1 id=&#34;configure-azure-arc-in-een-test-omgeving&#34;&gt;Configure Azure ARC in een test omgeving&lt;/h1&gt;&#xA;&lt;h3 id=&#34;-disclaimer-work-in-progress-&#34;&gt;==&amp;gt; Disclaimer work in progress. &amp;lt;==&lt;/h3&gt;&#xA;&lt;h2 id=&#34;voorwoord&#34;&gt;Voorwoord&lt;/h2&gt;&#xA;&lt;p&gt;Soms is het handig om even snel een testomgeving op te zetten, zodat je dingen kunt testen. Echter is het niet altijd mogelijk om een hele Hyper-V omgeving op te tuigen.&#xA;Hoe ga je dat snel doen? Wat heb je daar voor nodig? En kan dit in Azure? Meerdere vragen die ik nog wel eens gesteld krijg.&#xA;In deze blog ga ik jullie uitleggen hoe je in Azure een Hyper-V omgeving kunt bouwen en hoe je daarna Azure ARC erop installeert zodat je de machines kunt beheren via de Azure Portal.&lt;/p&gt;</description>
     </item>
     <item>
