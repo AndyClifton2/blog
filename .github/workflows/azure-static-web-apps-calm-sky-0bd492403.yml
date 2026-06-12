@@ -29,10 +29,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install PostCSS
-        run: npm install -g postcss postcss-cli autoprefixer
+        run: |
+          npm install -g postcss postcss-cli autoprefixer
+          cd themes/blist && npm install
 
       - name: Build
         run: hugo --minify
@@ -58,3 +60,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_SKY_0BD492403 }}
           action: "close"
+          app_location: "/"
