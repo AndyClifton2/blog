@@ -385,6 +385,6 @@ Wie Azure serieus inricht, doet er goed aan om niet alleen te vragen "Hebben we 
 
 Dit script helpt bij die laatste vraag.
 
-Het volledige script is beschikbaar op GitHub: [CAF.ps1 →](https://github.com/jouw-gebruikersnaam/azure-caf-verification)
+Het volledige script is beschikbaar op GitHub: [CAF.ps1 →](https://github.com/AndyClifton2/Scripts/tree/master/CAF)
 
 ## Azure-governance is pas effectief als je hem ook actief verifieert. Niet eenmalig, maar structureel.
