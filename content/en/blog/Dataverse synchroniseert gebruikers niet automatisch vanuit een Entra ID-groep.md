@@ -8,10 +8,11 @@ thumbnail: "/img/dataverse-sync-thumbnail.png"
 ---
 
 ## Voorwoord
-Bij het aanmaken van een Power Platform-omgeving kun je een Entra ID-beveiligingsgroep koppelen. Logisch zou zijn dat gebruikers die in die groep zitten automatisch gesynchroniseerd worden naar Dataverse — zodat ze meteen toegang hebben. In de praktijk blijkt dat niet het geval te zijn. Dataverse synchroniseert groepsleden niet automatisch op het moment dat de omgeving wordt aangemaakt of wanneer er nieuwe gebruikers aan de groep worden toegevoegd.
+Bij het aanmaken van een Power Platform-omgeving kun je een Entra ID-beveiligingsgroep koppelen. Logisch zou zijn dat gebruikers die in die groep zitten automatisch gesynchroniseerd worden naar Dataverse — zodat ze meteen toegang hebben. In de praktijk blijkt dat niet altijd het geval te zijn. Dataverse synchroniseert groepsleden niet automatisch op het moment dat de omgeving wordt aangemaakt of wanneer er nieuwe gebruikers aan de groep worden toegevoegd.
 Dit artikel laat zien hoe je dit probleem oplost met een PowerShell-script dat de synchronisatie handmatig afdwingt.
 
 <ins>Het probleem: ontbrekende gebruikers in Dataverse</ins>
+
 Wanneer je een Power Platform-omgeving aanmaakt en daarbij een Entra ID-beveiligingsgroep koppelt, verwacht je dat de gebruikers in die groep direct beschikbaar zijn in Dataverse. Microsoft documenteert ook dat de beveiligingsgroep de toegang tot de omgeving beperkt — maar de stap waarbij gebruikers daadwerkelijk als SystemUser in Dataverse worden geregistreerd, is een aparte synchronisatieactie.
 Die actie vindt niet automatisch en direct plaats. Het gevolg: gebruikers kunnen zich niet aanmelden in de omgeving, apps werken niet, en beheerders krijgen foutmeldingen die niet meteen naar de oorzaak wijzen.
 Het is een bekend fenomeen bij het beheer van DEV- en TEST-omgevingen, waarbij je snel toegang wilt verlenen na omgevingscreatie of na het toevoegen van nieuwe teamleden.
