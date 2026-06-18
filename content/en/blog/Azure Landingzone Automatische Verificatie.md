@@ -127,7 +127,7 @@ Op de root Management Group moeten Contributor rollen zijn toegewezen aan de beh
 
 <ins>G31 – Privileged Identity Management (PIM)</ins>
 
-Admin rollen horen nooit permanent te zijn. Met Entra PIM (Privileged Identity Management) maak je rollen *eligible* in plaats van actief: een beheerder vraagt tijdelijk toegang aan, geeft een reden op, en de rol wordt voor een beperkte tijd geactiveerd. Dit verkleint het aanvalsoppervlak enorm — een gecompromitteerd account heeft zonder actieve PIM activatie geen admin rechten.
+Admin rollen horen nooit permanent te zijn. Met Entra PIM (Privileged Identity Management) maak je rollen *eligible* in plaats van actief: een beheerder vraagt tijdelijk toegang aan, geeft een reden op, en de rol wordt voor een beperkte tijd geactiveerd. Dit verkleint het aanvalsoppervlak enorm een gecompromitteerd account heeft zonder actieve PIM activatie geen admin rechten.
 
 Het script controleert via `Get-AzRoleEligibleChildResource` of er PIM eligible assignments zijn geconfigureerd. Lukt de query niet door te lage rechten of een verouderde module, dan geeft het script een ⚠️ skip geen onterechte ❌.
 
@@ -192,7 +192,7 @@ Voor de meeste organisaties is Hub & Spoke de aanbevolen netwerktopologie binnen
 
 Virtual WAN (vWAN) is een alternatief dat Microsoft aanbiedt voor organisaties met complexere vereisten: meerdere regio's, grote aantallen branch locaties, of de wens om het routebeheer volledig over te laten aan het Azure platform. vWAN beheert routing automatisch en schaalt moeiteloos, maar brengt hogere kosten met zich mee en minder granulaire controle over de netwerkinrichting.
 
-De keuze tussen Hub & Spoke en Virtual WAN hangt af van de schaal, het beheermodel en de budgetruimte van de organisatie. Er is geen universeel juist antwoord — wél een juist antwoord voor jouw situatie.
+De keuze tussen Hub & Spoke en Virtual WAN hangt af van de schaal, het beheermodel en de budgetruimte van de organisatie. Er is geen universeel juist antwoord wél een juist antwoord voor jouw situatie.
 
 In het geval van dit voorbeeld koos de klant bewust voor Virtual WAN. De omgeving omvat meerdere locaties en de klant wilde routebeheer niet handmatig onderhouden. Het script verifieert daarom specifiek de vWAN componenten. Werk je zelf met Hub & Spoke, dan zul je de connectivity checks in het script aanpassen naar de relevante VNet en peering resources.
 
@@ -241,7 +241,7 @@ DNS is de stille infrastructuur die bepaalt of private connectivity daadwerkelij
 
 <ins>C07 – DNS Private Resolver</ins>
 
-In hybride omgevingen — waar on-premises systemen via ExpressRoute of VPN verbinding maken met Azure is een **DNS Private Resolver** nodig. Deze verzorgt *conditional forwarding*: DNS queries voor `privatelink.*` domeinen worden doorgestuurd naar Azure's private DNS, zodat on-premises clients de private IP adressen van Azure resources kunnen resolven.
+In hybride omgevingen waar on-premises systemen via ExpressRoute of VPN verbinding maken met Azure is een **DNS Private Resolver** nodig. Deze verzorgt *conditional forwarding*: DNS queries voor `privatelink.*` domeinen worden doorgestuurd naar Azure's private DNS, zodat on-premises clients de private IP adressen van Azure resources kunnen resolven.
 
 Ontbreekt de Private Resolver, dan kunnen on-premises systemen private endpoints simpelweg niet bereiken.
 
@@ -272,7 +272,7 @@ Een Azure omgeving zonder goede monitoring is een omgeving waarvan je pas achter
 
 <ins>S01 – Security policies via EPAC</ins>
 
-**EPAC** staat voor *Enterprise Azure Policy as Code* — een Microsoft open-source framework voor het beheren van Azure Policy als versie gecontroleerde code. Het script controleert of er EPAC gebaseerde security policies actief zijn op de root Management Group. Dit omvat minimaal auditpolicies voor compliance en securitybaselines.
+**EPAC** staat voor *Enterprise Azure Policy as Code* een Microsoft open-source framework voor het beheren van Azure Policy als versie gecontroleerde code. Het script controleert of er EPAC gebaseerde security policies actief zijn op de root Management Group. Dit omvat minimaal auditpolicies voor compliance en securitybaselines.
 
 Waarom EPAC? Omdat handmatig beheerde policies in de portal niet auditeerbaar zijn, niet herhaalbaar zijn, en snel uit sync raken met de werkelijkheid. Policy as code lost dat op.
 
@@ -383,7 +383,7 @@ Rode ❌ items bevatten altijd een detailregel (→) die exact aangeeft wat er o
 
 CAF is geen doel op zich het is een middel om Azure op een beheersbare, veilige en schaalbare manier in te richten. De waarde ervan zit niet in het volgen van het framework, maar in het consequent handhaven ervan.
 
-Dat is precies waar dit script bij helpt. Het verifieert niet of je ooit de juiste dingen hebt gedaan, maar of ze *nu* nog correct staan. Configuraties driften. Mensen maken wijzigingen. Terraform runs overschrijven soms onbedoeld bestaande instellingen. Een verificatiescript dat je na elke deployment — of periodiek als scheduled task uitvoert, geeft je de zekerheid dat de werkelijkheid overeenkomt met de bedoeling.
+Dat is precies waar dit script bij helpt. Het verifieert niet of je ooit de juiste dingen hebt gedaan, maar of ze *nu* nog correct staan. Configuraties driften. Mensen maken wijzigingen. Terraform runs overschrijven soms onbedoeld bestaande instellingen. Een verificatiescript dat je na elke deployment of periodiek als scheduled task uitvoert, geeft je de zekerheid dat de werkelijkheid overeenkomt met de bedoeling.
 
 Wie Azure serieus inricht, doet er goed aan om niet alleen te vragen "Hebben we alles gedeployed?", maar vooral "Staat het ook correct, volledig en aantoonbaar?"
 
