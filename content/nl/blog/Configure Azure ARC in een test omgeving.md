@@ -5,7 +5,6 @@ description: "Test omgeving Azure Arc."
 date: 2024-01-03
 tags: ["ARC"]
 thumbnail: "/img/arc.jpeg"
-aliases: ["/en/blog/configure-azure-arc-in-een-test-omgeving/"]
 ---
 
 

@@ -5,7 +5,6 @@ description: "Upgrade VM."
 date: 2024-03-08
 tags: ["Upgrade,2019,2022,VM"]
 thumbnail: "/img/server2022.png"
-aliases: ["/en/blog/upgrade-a-server-from-2019-to-2022/"]
 ---
 
 

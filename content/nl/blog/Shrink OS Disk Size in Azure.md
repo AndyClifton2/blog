@@ -5,7 +5,6 @@ description: "Verklein OS Disk Size in Azur"
 date: 2024-05-02
 tags: ["emoji"]
 thumbnail: "/img/Resize.png"
-aliases: ["/en/blog/shrink-os-disk-size-in-azure/"]
 ---
 
 # Verkleinen OS Disk Size in Azure

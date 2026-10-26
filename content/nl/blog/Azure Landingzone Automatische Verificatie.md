@@ -5,7 +5,6 @@ description: "Automatisch controleren of jouw Azure CAF-implementatie volledig e
 date: 2026-05-01
 tags: ["Azure", "PowerShell", "CAF", "Terraform", "Governance"]
 thumbnail: "/img/caf-thumbnail.png"
-aliases: ["/en/blog/azure-landingzone-automatische-verificatie/"]
 ---
 
 ## Voorwoord

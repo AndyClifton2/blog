@@ -5,7 +5,6 @@ description: "Disk Encryptie in Azure VMs."
 date: 2023-02-16
 tags: ["AzureB2B"]
 thumbnail: "/img/DiskEncryption.png"
-aliases: ["/en/blog/disk-encryptie-in-azure-vms/"]
 ---
 
 # Disk Encryptie in Azure VMs
