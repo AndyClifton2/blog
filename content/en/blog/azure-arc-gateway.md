@@ -4,6 +4,7 @@ date: 2026-09-30
 author: Andy Clifton
 tags: [Azure, Azure Arc, Hybride cloud, Netwerk, Azure Local]
 thumbnail: "/img/gateway.jpg"
+description: "De Azure Arc gateway brengt tientallen firewall endpoints terug naar zeven, met één gateway URL voor al het Arc verkeer. Hoe hij werkt, wat er in 2026 is veranderd (GA voor servers, Kubernetes en Azure Local, plus de bypass list), hoe je hem inricht en waar de grenzen liggen."
 ---
 
 # Azure Arc gateway: één endpoint voor al je hybride verkeer
