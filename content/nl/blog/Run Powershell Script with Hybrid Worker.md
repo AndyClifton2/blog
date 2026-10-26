@@ -4,6 +4,7 @@ title: "Run Powershell Script met Hybrid Worker Groups"
 date: 2023-08-12
 tags: ["emoji"]
 thumbnail: "/img/HRW.png"
+aliases: ["/en/blog/run-powershell-script-with-hybrid-worker/"]
 ---
 
 # Run Powershell Script met Hybrid Worker Groups

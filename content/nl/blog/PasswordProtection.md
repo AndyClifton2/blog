@@ -5,6 +5,7 @@ description: "Password Protection"
 date: 2023-04-18
 tags: ["emoji"]
 thumbnail: "/img/hugo.jpg"
+aliases: ["/en/blog/passwordprotection/"]
 ---
 
 # Password Protection

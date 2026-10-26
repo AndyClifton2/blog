@@ -5,6 +5,7 @@ description: "Eenmalige toegangscode voor Azure AD B2B-Guest Users"
 date: 2024-03-01
 tags: ["AzureB2B"]
 thumbnail: "/img/B2b.png"
+aliases: ["/en/blog/eenmalige-authenticatie-voor-guest-users/"]
 ---
 
 

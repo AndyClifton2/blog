@@ -5,6 +5,7 @@ description: "Dataverse synchroniseert groepsleden niet automatisch vanuit een E
 date: 2026-06-11
 tags: ["Azure", "PowerShell", "CAF", "Terraform", "Governance"]
 thumbnail: "/img/dataverse-sync-thumbnail.png"
+aliases: ["/en/blog/dataverse-synchroniseert-gebruikers-niet-automatisch-vanuit-een-entra-id-groep/"]
 ---
 
 ## Voorwoord

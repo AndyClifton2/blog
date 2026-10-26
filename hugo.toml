@@ -3,32 +3,54 @@ metaDataFormat = "yaml"
 title = "Andy Cliftons Blog"
 theme = "blist"
 
-DefaultContentLanguage = "en"
+# Nederlands is de standaardtaal en staat op /nl/, Engels op /en/
+DefaultContentLanguage = "nl"
 DefaultContentLanguageInSubdir = true
+
 [languages]
-  [languages.en]
-    contentDir = "content/en" #English
+
+  [languages.nl]
+    contentDir = "content/nl"
     weight = 1
-    languageName = "English"
-    [languages.en.params]
+    languageName = "Nederlands"
+    languageCode = "nl-NL"
+    [languages.nl.params]
       introTitle = "Hey! Ik ben Andy Clifton"
       introSubtitle = "Ik ben 43 jaar oud en Cloud Engineer en Tribe Lead bij RawWorks, Microsoft Certified Trainer en ik schrijf deze blogs. Ook maak ik de podcast Azure Adventurer."
       introPhoto = "/img/Ik.jpg"
       logo = "/raw.png"
-    [[languages.en.menu.main]]
-        name = "Blogs"
-        url = "blog"
-        weight = 1
+    [[languages.nl.menu.main]]
+      name = "Blogs"
+      url = "blog"
+      weight = 1
+    [[languages.nl.menu.main]]
+      name = "Over Mij"
+      url = "page/about/"
+      weight = 2
 
+  [languages.en]
+    contentDir = "content/en"
+    weight = 2
+    languageName = "English"
+    languageCode = "en-US"
+    [languages.en.params]
+      introTitle = "Hey! I'm Andy Clifton"
+      introSubtitle = "I'm 43, Cloud Engineer and Tribe Lead at RawWorks, Microsoft Certified Trainer, and I write these blogs. I also host the Azure Adventurer podcast."
+      introPhoto = "/img/Ik.jpg"
+      logo = "/raw.png"
     [[languages.en.menu.main]]
-        name = "Over Mij"
-        url = "page/about/"
-        weight = 2
-  
+      name = "Blogs"
+      url = "blog"
+      weight = 1
+    [[languages.en.menu.main]]
+      name = "About me"
+      url = "page/about/"
+      weight = 2
+
 [params]
   # Enable the darkmode toggle in header
   darkModeToggle = true
-  
+
   # Enable search in header
   enableSearch = true
 
@@ -47,7 +69,7 @@ DefaultContentLanguageInSubdir = true
   ]
 
   # Custom copyright - optional
-  copyright = "Copyright © 2024 - Andy Clifton · All rights reserved"
+  copyright = "Copyright © 2026 - Andy Clifton · All rights reserved"
   favicon = "/favicon.svg"
 
   # Color for the intro details and social links block, not applicable for dark mode
@@ -100,10 +122,10 @@ DefaultContentLanguageInSubdir = true
 
 [params.homepage.social]
   # Global params common for both languages
-  title = "Wil je me volgen op Linkedin, Github of Youtube?"
+  title = "Volg me op LinkedIn, GitHub of YouTube"
   description = ""
 
-   [[params.homepage.social.icons]]
+  [[params.homepage.social.icons]]
     website = "linkedin"
     url = "https://www.linkedin.com/in/andy-clifton-4b497bb6/"
   [[params.homepage.social.icons]]
@@ -112,13 +134,9 @@ DefaultContentLanguageInSubdir = true
   [[params.homepage.social.icons]]
     website = "RawWorks"
     url = "https://www.rawworks.nl/"
-      [[params.homepage.social.icons]]
+  [[params.homepage.social.icons]]
     website = "youtube"
     url = "https://www.youtube.com/@AzureAdventurer"
-
-[[menu.main]]
-  name = "About"
-  url = "/about"
 
 [build]
   writeStats = true

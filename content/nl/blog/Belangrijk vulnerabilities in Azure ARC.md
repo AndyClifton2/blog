@@ -5,6 +5,7 @@ description: "Test omgeving Azure Arc."
 date: 2026-03-13
 tags: ["ARC"]
 thumbnail: "/img/Designer.png"
+aliases: ["/en/blog/belangrijk-vulnerabilities-in-azure-arc/"]
 ---
 
 

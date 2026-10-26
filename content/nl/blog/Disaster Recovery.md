@@ -5,6 +5,7 @@ date: 2023-01-16
 description: "Disaster Recovery."
 tags: ["Disater,Recovery"]
 thumbnail: "/img/Disasterrecovery.jpeg"
+aliases: ["/en/blog/disaster-recovery/"]
 ---
 
 

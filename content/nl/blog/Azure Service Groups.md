@@ -5,6 +5,7 @@ description: "Azure Service Groups (public preview) laten je resources over meer
 date: 2026-08-24
 tags: [""]
 thumbnail: "/img/azure-service-groups-cover.png"
+aliases: ["/en/blog/azure-service-groups/"]
 ---
 
 # Azure Service Groups: eindelijk grip op workloads die over meerdere subscriptions verspreid zitten

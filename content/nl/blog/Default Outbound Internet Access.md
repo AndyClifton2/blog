@@ -5,6 +5,7 @@ description: "Default Outbound Internet Access niet langer by default allowed."
 date: 2025-08-12
 tags: ["Networking"]
 thumbnail: "/img/outbound.jpeg"
+aliases: ["/en/blog/default-outbound-internet-access/"]
 ---
 
 
