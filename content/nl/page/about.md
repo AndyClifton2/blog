@@ -19,7 +19,7 @@ Als Tribe Lead ben ik daarnaast verantwoordelijk voor de technische ontwikkeling
 
 ## Training en spreken
 
-Als Microsoft Certified Trainer geef ik regelmatig trainingen, van Azure Fundamentals voor mensen die net beginnen tot verdiepende sessies over Defender, hybride cloud en FinOps. Ik sta ook met enige regelmaat op het podium bij events en klantsessies. Als ik iets uitleg, wil ik dat je het daarna zelf kunt toepassen, niet alleen dat je het hebt gehoord.
+Als Microsoft Certified Trainer geef ik regelmatig trainingen, van Azure Fundamentals voor mensen die net beginnen tot verdiepende sessies over Defender, hybride cloud en FinOps. Als ik iets uitleg, wil ik dat je het daarna zelf kunt toepassen, niet alleen dat je het hebt gehoord.
 
 ## Azure Adventurer
 
@@ -31,7 +31,7 @@ Ik schrijf omdat ik zelf het meest heb gehad aan blogs van anderen die eerlijk w
 
 ## Buiten het werk
 
-Ik woon in Tilburg. Thuis knutsel ik aan domotica en energiebeheer rond de zonnepanelen, en in het weekend sta ik langs de lijn als trainer van een jeugdvoetbalteam. Dat laatste is misschien wel de beste training in geduld en uitleggen die je kunt krijgen.
+Ik woon in Tilburg.In het weekend sta ik langs de lijn als trainer van een jeugdvoetbalteam. Dat laatste is misschien wel de beste training in geduld en uitleggen die je kunt krijgen.
 
 ## Contact
 
