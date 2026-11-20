@@ -17,7 +17,7 @@ DefaultContentLanguageInSubdir = true
     [languages.nl.params]
       introTitle = "Hey! Ik ben Andy Clifton"
       introSubtitle = "Tech Lead bij RawWorks, Microsoft Certified Trainer en host van de podcast Azure Adventurer. Ik schrijf en spreek over hybride Azure: Azure Arc en Azure Local op een stevig CAF fundament."
-      introPhoto = "/img/Ik.jpg"
+      introPhoto = "/img/AndyPodium.jpg"
       logo = "/raw.png"
     [[languages.nl.menu.main]]
       name = "Blogs"
@@ -35,8 +35,8 @@ DefaultContentLanguageInSubdir = true
     languageCode = "en-US"
     [languages.en.params]
       introTitle = "Hey! I'm Andy Clifton"
-      introSubtitle = "I'm 43, Cloud Engineer and Tribe Lead at RawWorks, Microsoft Certified Trainer, and I write these blogs. I also host the Azure Adventurer podcast."
-      introPhoto = "/img/Ik.jpg"
+      introSubtitle = "ech Lead at RawWorks, Microsoft Certified Trainer and host of the Azure Adventurer podcast. I write and speak about hybrid Azure: Azure Arc and Azure Local on a solid CAF foundation."
+      introPhoto = "/img/AndyPodium.jpg"
       logo = "/raw.png"
     [[languages.en.menu.main]]
       name = "Blogs"
