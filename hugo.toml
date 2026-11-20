@@ -35,7 +35,7 @@ DefaultContentLanguageInSubdir = true
     languageCode = "en-US"
     [languages.en.params]
       introTitle = "Hey! I'm Andy Clifton"
-      introSubtitle = "ech Lead at RawWorks, Microsoft Certified Trainer and host of the Azure Adventurer podcast. I write and speak about hybrid Azure: Azure Arc and Azure Local on a solid CAF foundation."
+      introSubtitle = "Tech Lead at RawWorks, Microsoft Certified Trainer and host of the Azure Adventurer podcast. I write and speak about hybrid Azure: Azure Arc and Azure Local on a solid CAF foundation."
       introPhoto = "/img/AndyPodium.jpg"
       logo = "/raw.png"
     [[languages.en.menu.main]]
